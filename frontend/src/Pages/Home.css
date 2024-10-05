@@ -1,0 +1,923 @@
+.home {
+    /* background-color: blue; */
+    /* margin-top: -243px; */
+    margin-top: -276.5px;
+}
+
+.showMenu {
+    /* margin-top: -79px; */
+    margin-top: -90px;
+}
+
+.container {
+    /* min-height: 1800px; */
+    margin-top: 40px;
+    /* background-color: red; */
+    padding: 0 15%;
+}
+
+.containerBox {
+    /* background-color: rebeccapurple; */
+    height: 100%;
+}
+
+.containerBox .homeBox {
+    /* background-color: rgb(227, 156, 156); */
+    margin: 0px 0px 50px;
+    /* height: 25%; */
+}
+
+.homeBox h3 {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #011E29;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.homeBox hr {
+    background-color: #011E29;
+    flex: 1;
+    border: none;
+    height: 3px;
+    margin-bottom: 10px;
+}
+
+/* -----------------------------------------------------NewsBox content */
+
+.newsBoxContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* height: 350px; */
+    height: 450px;
+}
+
+
+/* -------------------NewsBox Content Left Side */
+.newsBoxContentLeft {
+    flex-basis: 64%;
+    position: relative;
+    height: 100%;
+}
+
+.newsBoxContentLeft img {
+    width: 100%;
+    height: 100%;
+}
+
+.newsBoxContentLeft p {
+    position: absolute;
+    bottom: 20px;
+    padding: 0px 20px;
+    color: white;
+    font-weight: 800;
+    font-size: 22px;
+    word-spacing: 5px;
+    cursor: pointer;
+}
+
+.newsBoxContentLeft p:hover {
+    text-decoration: underline;
+}
+
+
+/* -------------------NewsBox Content Left Side */
+.newsBoxContentRight {
+    flex-basis: 35%;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.newsBoxContentRight .newsBoxRUp {
+    /* background-color: rgb(178, 212, 103); */
+    height: 49%;
+    margin-bottom: 2%;
+    position: relative;
+}
+
+.newsBoxRUp img,
+.newsBoxRDown img {
+    width: 100%;
+    height: 100%;
+}
+
+.newsBoxRUp p,
+.newsBoxRDown p {
+    position: absolute;
+    bottom: 10px;
+    padding: 0px 20px;
+    color: white;
+    font-weight: 800;
+    font-size: 18px;
+    word-spacing: 5px;
+    cursor: pointer;
+}
+
+
+.newsBoxRUp p:hover,
+.newsBoxRDown p:hover {
+    text-decoration: underline;
+}
+
+.newsBoxContentRight .newsBoxRDown {
+    /* background-color: rgb(108, 133, 54); */
+    height: 49%;
+    position: relative;
+}
+
+/* -----------------------------------------------------END NewsBox content */
+
+
+/* ----------------------------------------------------- Start Article And Interview */
+.articleAndInterviewBox {
+    display: flex;
+    justify-content: space-between;
+    /* height: 400px; */
+    /* background-color: red; */
+}
+
+.articleAndInterviewBox.homeBox {
+    /* background-color: rebeccapurple; */
+    margin-bottom: 35px;
+}
+
+/* ------------------------------ Article */
+.articleBox {
+    flex-basis: 63%;
+    /* background-color: lightblue; */
+}
+
+.articleBoxContent {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* ------------------------------- Article Left Side */
+.articleBoxContent .articleBoxContentLeft {
+    flex-basis: 55%;
+    width: 100%;
+    height: 350px;
+    /* height: 330px; */
+    position: relative;
+}
+
+.articleBoxContentLeft img {
+    width: 100%;
+    height: 100%;
+}
+
+.articleBoxContentLeft p {
+    position: absolute;
+    bottom: 10px;
+    padding: 0px 10px;
+    color: white;
+    font-weight: 800;
+    font-size: 18px;
+    word-spacing: 5px;
+    cursor: pointer;
+}
+
+.articleBoxContentLeft p:hover {
+    text-decoration: underline;
+}
+
+
+/* ------------------------------- Article Right Side */
+.articleBoxContent .articleBoxContentRight {
+    flex-basis: 43%;
+    /* background-color: lightgrey; */
+    position: relative;
+}
+
+.articleInnerBox {
+    /* padding: 9px; */
+    /* background-color: khaki; */
+    margin: 0px 0px 36px;
+    display: flex;
+    align-items: flex-start;
+    /* justify-content: center; */
+    position: relative;
+    transition: 0.3s;
+    border-bottom: 3px dotted #ccc;
+    /* border: 2px solid #ccc; */
+    cursor: pointer;
+    color: black;
+    font-weight: 800;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.09);
+}
+
+.articleInnerBox:hover {
+    box-shadow: 0 5px 36px rgba(0, 0, 0, 0.3);
+}
+
+.articleInnerBox:first-child {
+    margin: 0px 0px 36px;
+}
+
+.articleInnerBox:last-child {
+    margin: 0px 0px 0px;
+}
+
+.articleBoxContentRight img {
+    width: 100px;
+    height: 90px;
+    margin-right: 10px;
+}
+
+/* .articleBoxContentRight div {
+    padding: 5px 0px;
+} */
+
+.articleBoxContentRight div p {
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.articleBoxContentRight p:hover {
+    text-decoration: underline;
+}
+
+.articleBoxContentRight div small {
+    position: absolute;
+    font-size: 12px;
+    bottom: 1px;
+    right: 10px;
+}
+
+/* -------------------------------- End Article */
+
+
+/* ------------------------------ Interview */
+.interviewBox {
+    flex-basis: 33%;
+    /* background-color: rgb(107, 173, 143); */
+}
+
+.interviewBoxContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.interviewInnerBox {
+    margin: 0px 0px 20px;
+    /* background-color: rgb(210, 152, 152); */
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0px;
+    transition: 0.5s;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.09);
+}
+
+.interviewInnerBox:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.interviewInnerBox img {
+    width: 100px;
+    height: 70px;
+    margin-right: 10px;
+}
+
+.interviewInnerBox p {
+    font-size: 16px;
+}
+
+.interviewInnerBox p:hover {
+    text-decoration: underline;
+}
+
+
+.interviewInnerBox #interviewTime {
+    display: none;
+}
+
+/* ----------------------------------------------------- End Article And Interview */
+
+/* ----------------------------------------------------- Event Box Start */
+
+.eventBoxContent {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* background-color: red; */
+    /* flex-wrap: wrap; */
+}
+
+.eventInnerBox {
+    margin: 0px 1.2vw;
+    background-color: white;
+    /* background-color: rgb(251, 6, 6); */
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 0px 0px 20px;
+    width: 230px;
+    height: 250px;
+    border-bottom: 2px dotted #ccc;
+    transition: all 0.5s;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.09);
+}
+
+.eventInnerBox:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.eventInnerBox img {
+    width: 230px;
+    height: 190px;
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+    transition: 0.5s;
+    object-fit: cover;
+}
+
+.eventInnerBox img:hover {
+    transform: scale(0.97);
+}
+
+.eventInnerBox p {
+    text-align: center;
+    font-size: 16px;
+    max-width: 200px;
+    display: block;
+    margin: auto;
+    /* background-color: red; */
+}
+
+.eventInnerBox p:hover {
+    text-decoration: underline;
+}
+
+.eventInnerBox #eventBoxTime {
+    display: none;
+}
+
+/* -----------------------------------------------------END Event Box Here */
+
+
+/* -----------------------------------------------------Magazine Box Start Here */
+
+.magazineInnerContent {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* background-color: red; */
+}
+
+.magazineInnerBox {
+    margin: 0px 1.2vw;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 0px 0px 20px;
+    width: 230px;
+    height: 270px;
+    border-bottom: 2px dotted #ccc;
+    transition: 0.5s;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.09);
+}
+
+
+.magazineInnerBox:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.magazineInnerBox img {
+    width: 230px;
+    height: 190px;
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+    transition: 0.5s;
+}
+
+.magazineInnerBox img:hover {
+    transform: scale(0.97);
+}
+
+.magazineInnerBox p {
+    text-align: center;
+    font-size: 16px;
+    max-width: 200px;
+    display: block;
+    margin: auto;
+    /* background-color: red; */
+}
+
+.magazineInnerBox p:hover {
+    text-decoration: underline;
+}
+
+.magazineInnerBox #magazineBoxTime {
+    display: none;
+}
+
+/* -----------------------------------------------------Magazine Box End Here */
+
+
+
+
+/* ------------------------------------------------------Responsive Design */
+
+@media (max-width:1490px) {
+
+    /* ------------ Event */
+    .eventInnerBox {
+        margin: 0px 0.6vw;
+        height: 280px;
+        width: 16.4vw;
+        overflow: hidden;
+    }
+
+    .eventInnerBox img {
+        width: 16.4vw;
+        height: 215px;
+    }
+
+    .eventInnerBox p {
+        max-width: 160px;
+    }
+
+    /* ---------- Magazine */
+    .magazineInnerBox {
+        margin: 0 0.6vw;
+        height: 300px;
+        width: 16.4vw;
+        overflow: hidden;
+    }
+
+    .magazineInnerBox img {
+        /* width: 170px; */
+        width: 16.4vw;
+        height: 200px;
+    }
+
+    .magazineInnerBox p {
+        max-width: 160px;
+    }
+}
+
+
+
+@media (max-width:1240px) {
+
+    /* --------- Article----------- */
+    .articleInnerBox {
+        margin: 0px 0px 20px;
+        height: 104px;
+    }
+
+    .articleInnerBox:first-child {
+        margin: 0px 0px 20px;
+    }
+
+    .eventInnerBox p,
+    .magazineInnerBox p {
+        max-width: 150px;
+        margin: 8px;
+    }
+}
+
+@media (max-width:1090px) {
+    .container {
+        height: 3730px;
+    }
+
+    /* ----------------- News Content */
+    .newsBoxContent {
+        flex-direction: column;
+        height: 1020px;
+        /* background-color: rebeccapurple; */
+    }
+
+    .newsBoxContentLeft {
+        flex-basis: 100%;
+        max-height: 320px;
+        width: 90%;
+        /* margin-bottom: 0px; */
+    }
+
+    .newsBoxContentLeft img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .newsBoxContentLeft p {
+        bottom: 20px;
+        padding: 0px 15px;
+    }
+
+    .newsBoxContentRight {
+        flex-basis: 100%;
+        max-height: 670px;
+        margin: 0px 0px 0px;
+        width: 100%;
+        /* background-color: rgb(52, 4, 4); */
+    }
+
+    .newsBoxContentRight .newsBoxRUp {
+        height: 320px;
+        width: 90%;
+        margin: 0px auto 30px;
+    }
+
+    .newsBoxContentRight .newsBoxRDown {
+        height: 320px;
+        width: 90%;
+        margin: 0px auto 0px;
+    }
+
+    .newsBoxRUp img,
+    .newsBoxRDown img {
+        width: 100%;
+        height: 100%;
+    }
+
+
+    .newsBoxRUp p,
+    .newsBoxRDown p {
+        bottom: 20px;
+        padding: 0 15px;
+    }
+
+
+
+    /* ---------- Article And Interview */
+    .articleAndInterviewBox {
+        flex-direction: column;
+        height: 890px;
+        /* background-color: beige; */
+    }
+
+
+    /* --------------- Article */
+    .articleBox {
+        flex-basis: 100%;
+    }
+
+    /* --------------- Interview */
+    .interviewBox {
+        flex-basis: 100%;
+        margin: 40px 0px 30px;
+    }
+
+    .interviewInnerBox {
+        margin-top: 10px;
+        position: relative;
+    }
+
+    .interviewInnerBox #interviewTime {
+        /* background-color: blue; */
+        display: block;
+        position: absolute;
+        right: 6px;
+        bottom: 4px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+
+    /* ------------ Event */
+
+    .eventBox.homeBox {
+        margin: 0px 0px 20px;
+    }
+
+    .eventBoxContent,
+    .magazineInnerContent {
+        flex-wrap: wrap;
+        /* background-color: blue; */
+    }
+
+    .eventInnerBox,
+    .magazineInnerBox {
+        width: 28vw;
+        height: 340px;
+        margin: 0px 3.5vw 30px;
+        /* background-color: antiquewhite; */
+        position: relative;
+    }
+
+    .eventInnerBox img,
+    .magazineInnerBox img {
+        width: 28vw;
+        height: 280px;
+        margin: 0px auto 10px;
+    }
+
+    .eventInnerBox p,
+    .magazineInnerBox p {
+        max-width: 90%;
+    }
+
+
+    .eventInnerBox #eventBoxTime,
+    .magazineInnerBox #magazineBoxTime {
+        display: block;
+        position: absolute;
+        bottom: 6px;
+        right: 4px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+
+}
+
+@media (max-width:800px) {
+    .container {
+        height: 3930px;
+    }
+
+    .articleAndInterviewBox {
+        height: 1300px;
+        /* background-color: rgb(207, 159, 159); */
+    }
+
+    .articleBox {
+        flex-basis: 100%;
+    }
+
+    .articleBoxContent {
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+
+    .articleInnerBox {
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .articleInnerBox img {
+        height: 100%;
+        width: 130px;
+    }
+
+    .articleInnerBox:first-child {
+        margin: 20px 0px 20px;
+    }
+
+    .articleInnerBox p {
+        padding-top: 10px;
+    }
+
+    .interviewBox {
+        flex-basis: 100%;
+    }
+
+    .interviewInnerBox {
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+        height: 100px;
+        margin: 0px 0px 20px;
+    }
+
+    .interviewInnerBox img {
+        height: 100%;
+        width: 130px;
+    }
+
+
+    .eventInnerBox,
+    .magazineInnerBox {
+        width: 32vw;
+        height: 300px;
+        margin: 0px 1.5vw 20px;
+        /* background-color: antiquewhite; */
+        position: relative;
+    }
+
+    .eventInnerBox img,
+    .magazineInnerBox img {
+        width: 32vw;
+        height: 220px;
+        margin: 0px auto 10px;
+    }
+}
+
+@media (max-width:700px) {
+    .articleAndInterviewBox {
+        height: 1260px;
+        /* background-color: rgb(207, 159, 159); */
+    }
+}
+
+
+@media (max-width:650px) {
+    .container {
+        padding: 0 5%;
+        /* height: 5180px; */
+        height: 3930px;
+    }
+
+    /* ------------ News Start */
+
+    .newsBoxContent {
+        flex-direction: column;
+        height: 1020px;
+        /* background-color: rebeccapurple; */
+        margin-bottom: 50px;
+    }
+
+    .newsBoxContentLeft {
+        width: 100%;
+        height: 320px;
+        margin-bottom: 30px;
+    }
+
+    .newsBoxContentLeft img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .newsBoxContentLeft p {
+        font-size: 16px;
+        bottom: 10px;
+    }
+
+    .newsBoxContentRight {
+        width: 100%;
+        height: 100%;
+        margin: 0px 0px 0px;
+    }
+
+    .newsBoxContentRight .newsBoxRUp {
+        width: 100%;
+        height: 320px;
+        margin-bottom: 30px;
+    }
+
+    .newsBoxContentRight .newsBoxRDown {
+        width: 100%;
+        height: 320px;
+    }
+
+    .newsBoxRUp p,
+    .newsBoxRDown p {
+        bottom: 10px;
+        font-size: 15px;
+    }
+
+    /* News End Here. */
+
+
+    /* --------Article And Interview */
+    .articleAndInterviewBox {
+        height: 1343px;
+        /* background-color: rgb(207, 159, 159); */
+        display: block;
+    }
+
+
+    /* Article Start Here. */
+
+    .articleBox {
+        flex-basis: 100%;
+    }
+
+    .articleBoxContent {
+        flex-direction: column;
+        height: 702px;
+        /* background-color: rgb(113, 113, 147); */
+        margin-bottom: 50px;
+    }
+
+    .articleBoxContentLeft {
+        /* background-color: lightblue; */
+        max-height: 300px;
+        margin-bottom: 30px;
+    }
+
+    .articleBoxContentLeft img {
+        width: 100%;
+        height: 300px;
+    }
+
+    .articleBoxContentLeft p {
+        position: absolute;
+        bottom: 10px;
+        font-size: 15px;
+    }
+
+    .articleInnerBox {
+        margin: 0px 0px 30px;
+    }
+
+    .articleInnerBox:first-child {
+        margin: 0px 0px 30px;
+    }
+
+    .articleBoxContentRight div p {
+        font-size: 14px;
+    }
+
+    .articleBoxContentRight div small {
+        font-size: 10px;
+    }
+
+
+    /* --------------- Interview */
+
+
+    .interviewInnerBox {
+        padding-right: 2px;
+        margin: 0px 0px 30px;
+    }
+
+    .interviewInnerBox p {
+        font-size: 14px;
+    }
+
+
+
+    /* ----------- Event Box */
+
+    .eventBoxContent,
+    .magazineInnerContent {
+        flex-wrap: wrap;
+        width: 100%;
+        /* background-color: red; */
+    }
+
+    .eventInnerBox,
+    .magazineInnerBox {
+        width: 43vw;
+        height: 300px;
+        margin: 0px 1vw 30px;
+        /* background-color: antiquewhite; */
+        /* box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1); */
+    }
+
+    .eventBox.homeBox {
+        margin: 50px 0px 20px;
+    }
+
+    .magazineBox.homeBox {
+        margin: 0px 0px 20px;
+    }
+
+
+    .eventInnerBox img,
+    .magazineInnerBox img {
+        width: 43vw;
+        height: 240px;
+    }
+
+    .eventInnerBox p,
+    .magazineInnerBox p {
+        max-width: 90%;
+        font-size: 14px;
+    }
+
+
+    .interviewInnerBox #interviewTime,
+    .eventInnerBox #eventBoxTime,
+    .magazineInnerBox #magazineBoxTime {
+        font-size: 10px;
+    }
+}
+
+@media (max-width:450px) {
+    .container {
+        height: 5230px;
+    }
+
+    .eventBoxContent,
+    .magazineInnerContent {
+        flex-direction: column;
+    }
+
+    .eventInnerBox,
+    .magazineInnerBox {
+        width: 90vw;
+        height: 300px;
+        margin: 0px 0vw 27px;
+        /* background-color: antiquewhite; */
+        /* box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1); */
+    }
+
+    .eventInnerBox img,
+    .magazineInnerBox img {
+        width: 90vw;
+        height: 290px;
+    }
+
+    .eventInnerBox p,
+    .magazineInnerBox p {
+        text-align: left;
+        margin-top: 0px;
+    }
+}

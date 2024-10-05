@@ -1,0 +1,142 @@
+.footer {
+    background-color: #011E29;
+    color: white;
+    width: 100%;
+    padding: 0px 15% 0px;
+}
+
+.footerPannelOne {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 0px 30px;
+}
+
+.footerOneInner {
+    height: 250px;
+}
+
+.footerOneInner .userIcon {
+    width: 90px;
+    border-radius: 50%;
+    margin: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.footerOneInner h1 {
+    margin: 30px 0 10px;
+}
+
+.footerOneInner p {
+    text-align: center;
+}
+
+.footerOneInner ul li {
+    list-style: none;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.footerOneInner ul li:hover {
+    text-decoration: underline;
+}
+
+.footerOneInnerx ul li {
+    list-style: none;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.footerOneInnerx ul li img {
+    width: 20px;
+    margin-right: 20px;
+}
+
+.footerPannelTwo {
+    text-align: center;
+    background-color: #01131b;
+    margin: 0px -21.4% -20px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hideFooter {
+    display: none;
+}
+
+
+/* ---------------------- Media Queries */
+
+@media (max-width:1100px) {
+    .footer {
+        padding: 0px 2vw 0px;
+    }
+
+    .footerPannelOne {
+        padding: 50px 0px 0px;
+    }
+
+    .footerPannelTwo {
+        margin: 0px -2vw 0px;
+    }
+
+    .footerOneInner h1 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .footerOneInner ul li {
+        font-size: 18px;
+    }
+
+    .footerOneInnerx ul li {
+        font-size: 16px;
+    }
+}
+
+
+@media (max-width:650px) {
+    .footerPannelOne {
+        flex-direction: column;
+    }
+
+    .footerOneInner {
+        height: 230px;
+        /* background-color: black; */
+    }
+
+    .footerOneInner h1 {
+        margin: 15px 0 10px;
+    }
+
+    .footerOneInner ul {
+        text-align: center;
+        /* background-color: rebeccapurple; */
+        margin-bottom: 30px;
+        margin-top: -10px;
+    }
+
+    .footerOneInner ul li {
+        display: inline-block;
+        margin: 5px 12px;
+    }
+
+    .footerOneInnerx {
+        margin-top: -130px;
+        /* background-color: blue; */
+    }
+
+    .footerPannelTwo {
+        margin: 0px -2vw 0px;
+    }
+
+    .footerPannelTwo p {
+        font-size: 14px;
+    }
+}
