@@ -34,13 +34,13 @@ app.use("/uploads", express.static(path.resolve("./uploads")))
 
 
 // Cors
-// app.use(cors({
-//     // origin: [FRONTEND_URL],
-//     origin: ["https://deploy-news-web-frontend.vercel.app"],
-//     // origin: ["http://localhost:3000"],
-//     methods: ["POST", "GET", "PUT", "DELETE"],
-//     credentials: true,
-// }))
+app.use(cors({
+    // origin: [FRONTEND_URL],
+    origin: ["https://deploy-news-web-frontend.vercel.app"],
+    // origin: ["http://localhost:3000"],
+    methods: ["POST", "GET", "PUT", "DELETE"],
+    credentials: true,
+}))
 
 
 // const allowedOrigins = ['https://deploy-news-web-frontend.vercel.app'];
@@ -57,15 +57,20 @@ app.use("/uploads", express.static(path.resolve("./uploads")))
 //     credentials: true, // Allow credentials if you are using cookies or authentication
 // }));
 
-app.options('*', cors()); // Preflight request handling
+// app.options('*', cors()); // Preflight request handling
 
 
 // Routes
 app.use("/user", userRoute);
 
-app.use("/news", newsRoute);
+// app.use("/news", newsRoute);
 
 app.use('/comment', commentRoute)
+
+app.get('/news/fetchallnews', (req, res) => {
+    res.json({ data: 'news data' });
+});
+
 
 
 // Listen
