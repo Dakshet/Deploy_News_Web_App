@@ -34,14 +34,28 @@ app.use("/uploads", express.static(path.resolve("./uploads")))
 
 
 // Cors
-app.use(cors({
-    // origin: [FRONTEND_URL],
-    origin: ["https://deploy-news-web-frontend.vercel.app"],
-    // origin: ["http://localhost:3000"],
-    methods: ["POST", "GET", "PUT", "DELETE"],
-    credentials: true,
-}))
+// app.use(cors({
+//     // origin: [FRONTEND_URL],
+//     origin: ["https://deploy-news-web-frontend.vercel.app"],
+//     // origin: ["http://localhost:3000"],
+//     methods: ["POST", "GET", "PUT", "DELETE"],
+//     credentials: true,
+// }))
 
+
+const allowedOrigins = ['https://deploy-news-web-frontend.vercel.app'];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true, // Allow credentials if you are using cookies or authentication
+}));
 
 
 // Routes
