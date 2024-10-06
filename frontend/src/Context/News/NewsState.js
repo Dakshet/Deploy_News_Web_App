@@ -86,6 +86,7 @@ const NewsState = (props) => {
         try {
             const response = await fetch(`${host}/news/fetchallnews`, {
                 method: "GET",
+                credentials:"include",
                 headers: {
                     "Content-Type": "application/json"
                 }
