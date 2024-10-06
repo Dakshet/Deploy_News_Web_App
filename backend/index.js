@@ -43,19 +43,21 @@ app.use("/uploads", express.static(path.resolve("./uploads")))
 // }))
 
 
-const allowedOrigins = ['https://deploy-news-web-frontend.vercel.app'];
+// const allowedOrigins = ['https://deploy-news-web-frontend.vercel.app'];
 
-app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE', "OPTIONS"],
-    credentials: true, // Allow credentials if you are using cookies or authentication
-}));
+// app.use(cors({
+//     origin: function (origin, callback) {
+//         if (!origin || allowedOrigins.includes(origin)) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error('Not allowed by CORS'));
+//         }
+//     },
+//     methods: ['GET', 'POST', 'PUT', 'DELETE', "OPTIONS"],
+//     credentials: true, // Allow credentials if you are using cookies or authentication
+// }));
+
+app.options('*', cors()); // Preflight request handling
 
 
 // Routes
