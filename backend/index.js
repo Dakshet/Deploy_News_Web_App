@@ -67,10 +67,10 @@ app.use("/user", userRoute);
 
 app.use('/comment', commentRoute)
 
-// app.get('/news/fetchallnews', (req, res) => {
-//     res.json({ data: 'news data' });
-// });
-// ////////
+app.get('/news/fetchallnews', (req, res) => {
+    res.json({ data: 'news data' });
+});
+////////
 
 
 // Listen
