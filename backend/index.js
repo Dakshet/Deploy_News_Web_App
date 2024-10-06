@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const MONGODB_URL = process.env.MONGODB_URL;
 const FRONTEND_URL = process.env.FRONTEND_URL;
-// console.log(FRONTEND_URL);
+console.log(FRONTEND_URL);
 
 
 // Import
