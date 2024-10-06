@@ -88,7 +88,7 @@ const NewsState = (props) => {
 
             if (response.ok) {
                 const json = await response.json();
-
+                console.log(json);
                 if (json.news) {
                     setNews(json.news);
                 }
