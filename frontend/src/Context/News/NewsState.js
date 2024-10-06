@@ -76,7 +76,6 @@ const NewsState = (props) => {
 
     //Fetch news for home screen
     const fetchNews = async () => {
-
         try {
             const response = await fetch(`${host}/news/fetchallnews`, {
                 method: "GET",

@@ -31,6 +31,9 @@ app.use(cors({
     credentials: true,
 }))
 
+app.options('*', cors()); // Preflight requests handled globally
+
+
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
