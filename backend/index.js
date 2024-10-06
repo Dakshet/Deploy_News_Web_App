@@ -27,25 +27,21 @@ handleToDB(MONGODB_URL).then(() => {
 // Cors
 app.use(cors({
     origin: FRONTEND_URL,
-    methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
-}))
+}));
 
-app.options('*', cors()); // Preflight requests handled globally
-
-app.use((req, res, next) => {
+// Global handling for preflight OPTIONS requests
+app.options('*', (req, res) => {
     res.header('Access-Control-Allow-Origin', FRONTEND_URL);
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.header('Access-Control-Allow-Credentials', 'true');
-
-    // Respond to preflight requests
-    if (req.method === 'OPTIONS') {
-        return res.sendStatus(204); // No content for preflight requests
-    }
-
-    next();
+    res.sendStatus(204); // Respond with no content
 });
+
+
 
 
 // Middleware
