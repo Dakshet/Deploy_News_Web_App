@@ -27,19 +27,20 @@ handleToDB(MONGODB_URL).then(() => {
 // Cors
 app.use(cors({
     origin: FRONTEND_URL,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    // methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    // allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
 }));
 
 // Global handling for preflight OPTIONS requests
-app.options('*', (req, res) => {
-    res.header('Access-Control-Allow-Origin', FRONTEND_URL);
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.sendStatus(204); // Respond with no content
-});
+// app.options('*', (req, res) => {
+//     res.header('Access-Control-Allow-Origin', FRONTEND_URL);
+//     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+//     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//     res.header('Access-Control-Allow-Credentials', 'true');
+//     res.sendStatus(204); // Respond with no content
+// });
 
 
 
@@ -59,10 +60,10 @@ app.use("/news", newsRoute);
 app.use('/comment', commentRoute)
 
 // Logging for requests (optional)
-app.use((req, res, next) => {
-    console.log(`Request Method: ${req.method}, Request URL: ${req.url}`);
-    next();
-});
+// app.use((req, res, next) => {
+//     console.log(`Request Method: ${req.method}, Request URL: ${req.url}`);
+//     next();
+// });
 ////////
 
 
