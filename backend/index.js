@@ -23,6 +23,15 @@ handleToDB(MONGODB_URL).then(() => {
     console.log("DB Connected!")
 })
 
+// Cors
+app.use(cors({
+    origin: [FRONTEND_URL],
+    // origin: ["https://deploy-news-web-frontend.vercel.app"],
+    // origin: ["http://localhost:3000"],
+    methods: ["POST", "GET", "PUT", "DELETE"],
+    credentials: true,
+}))
+
 // const FRONTEND_URL = process.env.FRONTEND_URL || "https://deploy-news-web-frontend.vercel.app";
 
 // // CORS Configuration
@@ -50,14 +59,7 @@ app.use("/uploads", express.static(path.resolve("./uploads")))
 // Engine
 
 
-// Cors
-app.use(cors({
-    origin: [FRONTEND_URL],
-    // origin: ["https://deploy-news-web-frontend.vercel.app"],
-    // origin: ["http://localhost:3000"],
-    methods: ["POST", "GET", "PUT", "DELETE"],
-    credentials: true,
-}))
+
 
 
 // const allowedOrigins = ['https://deploy-news-web-frontend.vercel.app'];
