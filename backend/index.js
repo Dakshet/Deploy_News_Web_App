@@ -23,22 +23,22 @@ handleToDB(MONGODB_URL).then(() => {
     console.log("DB Connected!")
 })
 
-const FRONTEND_URL = process.env.FRONTEND_URL || "https://deploy-news-web-frontend.vercel.app";
+// const FRONTEND_URL = process.env.FRONTEND_URL || "https://deploy-news-web-frontend.vercel.app";
 
-// CORS Configuration
-app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || FRONTEND_URL.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    credentials: true,
-}));
+// // CORS Configuration
+// app.use(cors({
+//     origin: function (origin, callback) {
+//         if (!origin || FRONTEND_URL.includes(origin)) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error('Not allowed by CORS'));
+//         }
+//     },
+//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//     credentials: true,
+// }));
 
-app.options('*', cors()); // Handle preflight requests for all routes
+// app.options('*', cors()); // Handle preflight requests for all routes
 
 
 // Middleware
@@ -51,13 +51,13 @@ app.use("/uploads", express.static(path.resolve("./uploads")))
 
 
 // Cors
-// app.use(cors({
-//     origin: [FRONTEND_URL],
-//     // origin: ["https://deploy-news-web-frontend.vercel.app"],
-//     // origin: ["http://localhost:3000"],
-//     methods: ["POST", "GET", "PUT", "DELETE"],
-//     credentials: true,
-// }))
+app.use(cors({
+    origin: [FRONTEND_URL],
+    // origin: ["https://deploy-news-web-frontend.vercel.app"],
+    // origin: ["http://localhost:3000"],
+    methods: ["POST", "GET", "PUT", "DELETE"],
+    credentials: true,
+}))
 
 
 // const allowedOrigins = ['https://deploy-news-web-frontend.vercel.app'];
