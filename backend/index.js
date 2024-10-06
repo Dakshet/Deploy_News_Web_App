@@ -40,20 +40,15 @@ app.use("/uploads", express.static(path.resolve("./uploads"))
 // Routes
 app.use("/user", userRoute);
 
-// app.use("/news", newsRoute);
+app.use("/news", newsRoute);
 
 app.use('/comment', commentRoute)
 
-app.get('/news/fetchallnews', (req, res) => {
-    // Simulating fetching news data
-    // If there's an error or no data, return appropriate status codes
-    res.status(200).json({ news: 'news data' });
+// Logging for requests (optional)
+app.use((req, res, next) => {
+    console.log(`Request Method: ${req.method}, Request URL: ${req.url}`);
+    next();
 });
-
-
-// app.get('/news/fetchallnews', (req, res) => {
-//     res.json({ data: 'news data' });
-// });
 
 
 
