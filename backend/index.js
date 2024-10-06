@@ -6,8 +6,9 @@ const { handleToDB } = require("./connection");
 const app = express();
 const PORT = process.env.PORT || 4000;
 const MONGODB_URL = process.env.MONGODB_URL;
-const FRONTEND_URL = process.env.FRONTEND_URL;
+// const FRONTEND_URL = process.env.FRONTEND_URL;
 // console.log(FRONTEND_URL);
+const FRONTEND_URL = "https://deploy-news-web-frontend.vercel.app";
 
 
 // Import
@@ -23,52 +24,31 @@ handleToDB(MONGODB_URL).then(() => {
     console.log("DB Connected!")
 })
 
+// Cors
+app.use(cors({
+    origin: FRONTEND_URL,
+    methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
+}))
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
-app.use("/uploads", express.static(path.resolve("./uploads")))
+app.use("/uploads", express.static(path.resolve("./uploads")));
 
-
-// Engine
-
-
-// Cors
-app.use(cors({
-    origin: [FRONTEND_URL],
-    // origin: ["https://deploy-news-web-frontend.vercel.app"],
-    // origin: ["http://localhost:3000"],
-    methods: ["POST", "GET", "PUT", "DELETE"],
-    credentials: true,
-}))
-
-
-// const allowedOrigins = ['https://deploy-news-web-frontend.vercel.app'];
-
-// app.use(cors({
-//     origin: function (origin, callback) {
-//         if (!origin || allowedOrigins.includes(origin)) {
-//             callback(null, true);
-//         } else {
-//             callback(new Error('Not allowed by CORS'));
-//         }
-//     },
-//     methods: ['GET', 'POST', 'PUT', 'DELETE', "OPTIONS"],
-//     credentials: true, // Allow credentials if you are using cookies or authentication
-// }));
-
-// app.options('*', cors()); // Preflight request handling
 
 
 // Routes
 app.use("/user", userRoute);
 
-// app.use("/news", newsRoute);
+app.use("/news", newsRoute);
 
 app.use('/comment', commentRoute)
 
-app.get('/news/fetchallnews', (req, res) => {
-    res.json({ data: 'news data' });
+// Logging for requests (optional)
+app.use((req, res, next) => {
+    console.log(`Request Method: ${req.method}, Request URL: ${req.url}`);
+    next();
 });
 ////////
 

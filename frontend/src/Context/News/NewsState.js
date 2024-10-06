@@ -77,37 +77,18 @@ const NewsState = (props) => {
     //Fetch news for home screen
     const fetchNews = async () => {
 
-        // This helps catch network errors like connection issues or invalid URL.
-        // Failure in the try-catch block:
-        // Network issues: If the server is unreachable, such as the API URL being incorrect (http://localhost:5001/news/fetchallnews), the fetch request will fail, triggering the catch block.
-        // CORS issues: Cross-Origin Resource Sharing (CORS) errors can occur if the API server does not allow requests from your frontend. This can result in the fetch call failing and hitting the catch block.
-        // Invalid URL: If the URL or endpoint is incorrect, the request will fail, and the catch block will handle it.
-        // Server downtime: If the server is down or overloaded, the network request will fail, and the error will be caught in the catch block.
         try {
             const response = await fetch(`${host}/news/fetchallnews`, {
                 method: "GET",
-                credentials:"include",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json"
                 }
             })
 
-            // If the response status is not 2xx, it logs an error with the status code. 
-            // Failure in response.ok:
-            // Server returned an error: The response.ok is false when the server returns a non-2xx HTTP status code, such as:
-            // 404 (Not Found): The endpoint does not exist on the server.
-            // 500 (Internal Server Error): The server encountered an issue processing the request.
-            // 401 (Unauthorized): The request requires authentication, and you didn't provide valid credentials.
-            // Solution: Always check the response.status to understand the exact HTTP error.
             if (response.ok) {
                 const json = await response.json();
-
-
-                // Failure in json.news:
-                // Invalid JSON format: If the response body is not valid JSON or if there’s a syntax error, the .json() call will fail. In this case, the catch block might catch the error when trying to parse the JSON.
-                // Missing news property: The response may not include the news field as expected, or the API might be returning an unexpected structure (e.g., due to changes in the backend).
-                // Solution: You should always check if json.news exists before accessing it, which you're already doing.
-                // Empty or incorrect response: The API could return a response, but it may be an empty object or have an unexpected format. This can happen if there is a backend issue or if the request parameters are incorrect.
+                console.log(json);
                 if (json.news) {
                     setNews(json.news);
                 }
@@ -123,7 +104,6 @@ const NewsState = (props) => {
             }
 
         } catch (error) {
-            // Catch any network or unexpected errors
             console.error("Error fetching the news:", error);
             setNews([]); // Optional: Reset state in case of network error
         }
