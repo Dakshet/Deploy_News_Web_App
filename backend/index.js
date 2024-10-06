@@ -28,7 +28,7 @@ app.use(cors({
     origin: [FRONTEND_URL],
     // origin: ["https://deploy-news-web-frontend.vercel.app"],
     // origin: ["http://localhost:3000"],
-    methods: ["POST", "GET", "PUT", "DELETE"],
+    methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
 }))
 
