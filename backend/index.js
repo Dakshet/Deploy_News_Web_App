@@ -26,11 +26,15 @@ handleToDB(MONGODB_URL).then(() => {
 // Cors
 app.use(cors({
     origin: [FRONTEND_URL],
-    // origin: ["https://deploy-news-web-frontend.vercel.app"],
-    // origin: ["http://localhost:3000"],
     methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
 }))
+
+app.options('*', cors({
+    origin: FRONTEND_URL,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
+}));
 
 // const FRONTEND_URL = process.env.FRONTEND_URL || "https://deploy-news-web-frontend.vercel.app";
 
