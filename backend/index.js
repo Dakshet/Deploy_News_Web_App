@@ -30,11 +30,13 @@ app.use(cors({
     credentials: true,
 }))
 
-app.options('*', cors({
-    origin: FRONTEND_URL,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    credentials: true,
-}));
+// Preflight request handling
+app.options('*', cors());
+
+app.options('*', (req, res) => {
+    console.log("Preflight request received");
+    res.sendStatus(200); // Respond with a 200 status for preflight requests
+});
 
 // const FRONTEND_URL = process.env.FRONTEND_URL || "https://deploy-news-web-frontend.vercel.app";
 
@@ -86,9 +88,16 @@ app.use("/uploads", express.static(path.resolve("./uploads")))
 // Routes
 app.use("/user", userRoute);
 
-app.use("/news", newsRoute);
+// app.use("/news", newsRoute);
 
 app.use('/comment', commentRoute)
+
+newsRoute.get('/news/fetchallnews', (req, res) => {
+    // Simulating fetching news data
+    // If there's an error or no data, return appropriate status codes
+    res.status(200).json({ data: 'news data' });
+});
+
 
 // app.get('/news/fetchallnews', (req, res) => {
 //     res.json({ data: 'news data' });
