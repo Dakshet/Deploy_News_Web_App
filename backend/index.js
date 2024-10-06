@@ -6,17 +6,17 @@ const { handleToDB } = require("./connection");
 const app = express();
 const PORT = process.env.PORT || 4000;
 const MONGODB_URL = process.env.MONGODB_URL;
-// const FRONTEND_URL = process.env.FRONTEND_URL;
+const FRONTEND_URL = process.env.FRONTEND_URL;
 // console.log(FRONTEND_URL);
-const FRONTEND_URL = "https://deploy-news-web-frontend.vercel.app";
+// const FRONTEND_URL = "https://deploy-news-web-frontend.vercel.app";
 
 
 // Import
+const cors = require("cors");
+const path = require("path")
 const userRoute = require("./routes/user")
 const newsRoute = require('./routes/news')
 const commentRoute = require("./routes/comment")
-const cors = require("cors")
-const path = require("path")
 
 
 // MongoDB connection
