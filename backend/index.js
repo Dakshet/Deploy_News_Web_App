@@ -25,64 +25,16 @@ handleToDB(MONGODB_URL).then(() => {
 
 // Cors
 app.use(cors({
-    origin: [FRONTEND_URL],
+    origin: FRONTEND_URL,
     methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
 }))
 
-// Preflight request handling
-app.options('*', cors());
-
-app.options('*', (req, res) => {
-    console.log("Preflight request received");
-    res.sendStatus(200); // Respond with a 200 status for preflight requests
-});
-
-// const FRONTEND_URL = process.env.FRONTEND_URL || "https://deploy-news-web-frontend.vercel.app";
-
-// // CORS Configuration
-// app.use(cors({
-//     origin: function (origin, callback) {
-//         if (!origin || FRONTEND_URL.includes(origin)) {
-//             callback(null, true);
-//         } else {
-//             callback(new Error('Not allowed by CORS'));
-//         }
-//     },
-//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-//     credentials: true,
-// }));
-
-// app.options('*', cors()); // Handle preflight requests for all routes
-
-
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
-app.use("/uploads", express.static(path.resolve("./uploads")))
+app.use("/uploads", express.static(path.resolve("./uploads"))
 
-
-// Engine
-
-
-
-
-
-// const allowedOrigins = ['https://deploy-news-web-frontend.vercel.app'];
-
-// app.use(cors({
-//     origin: function (origin, callback) {
-//         if (!origin || allowedOrigins.includes(origin)) {
-//             callback(null, true);
-//         } else {
-//             callback(new Error('Not allowed by CORS'));
-//         }
-//     },
-//     methods: ['GET', 'POST', 'PUT', 'DELETE', "OPTIONS"],
-//     credentials: true, // Allow credentials if you are using cookies or authentication
-// }));
-
-// app.options('*', cors()); // Preflight request handling
 
 
 // Routes
@@ -92,10 +44,10 @@ app.use("/user", userRoute);
 
 app.use('/comment', commentRoute)
 
-newsRoute.get('/news/fetchallnews', (req, res) => {
+app.get('/news/fetchallnews', (req, res) => {
     // Simulating fetching news data
     // If there's an error or no data, return appropriate status codes
-    res.status(200).json({ data: 'news data' });
+    res.status(200).json({ news: 'news data' });
 });
 
 
