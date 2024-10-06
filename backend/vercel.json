@@ -8,11 +8,19 @@
     ],
     "routes": [
         {
-            "src": "/news/fetchallnews",
+            "src": "/(.*)",
             "dest": "./index.js",
             "methods": [
-                "GET"
-            ]
+                "GET",
+                "POST",
+                "PUT",
+                "DELETE",
+                "PATCH",
+                "OPTIONS"
+            ],
+            "headers": {
+                "Access-Control-Allow-Origin": "*"
+            }
         }
     ]
 }
