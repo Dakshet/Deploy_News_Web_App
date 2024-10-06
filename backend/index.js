@@ -35,8 +35,8 @@ app.use("/uploads", express.static(path.resolve("./uploads")))
 
 // Cors
 app.use(cors({
-    // origin: [FRONTEND_URL],
-    origin: ["https://deploy-news-web-frontend.vercel.app"],
+    origin: [FRONTEND_URL],
+    // origin: ["https://deploy-news-web-frontend.vercel.app"],
     // origin: ["http://localhost:3000"],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
@@ -63,13 +63,13 @@ app.use(cors({
 // Routes
 app.use("/user", userRoute);
 
-// app.use("/news", newsRoute);
+app.use("/news", newsRoute);
 
 app.use('/comment', commentRoute)
 
-app.get('/news/fetchallnews', (req, res) => {
-    res.json({ data: 'news data' });
-});
+// app.get('/news/fetchallnews', (req, res) => {
+//     res.json({ data: 'news data' });
+// });
 
 
 
