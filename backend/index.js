@@ -19,11 +19,6 @@ const newsRoute = require('./routes/news')
 const commentRoute = require("./routes/comment")
 
 
-// MongoDB connection
-handleToDB(MONGODB_URL).then(() => {
-    console.log("DB Connected!")
-})
-
 // Cors
 app.use(cors({
     origin: FRONTEND_URL,
@@ -32,6 +27,12 @@ app.use(cors({
     // allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
 }));
+
+
+// MongoDB connection
+handleToDB(MONGODB_URL).then(() => {
+    console.log("DB Connected!")
+})
 
 // Global handling for preflight OPTIONS requests
 // app.options('*', (req, res) => {
