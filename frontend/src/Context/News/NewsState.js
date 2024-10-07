@@ -82,7 +82,8 @@ const NewsState = (props) => {
                 method: "GET",
                 // credentials: "include",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    'Access-Control-Allow-Origin': '*',
                 }
             })
 
