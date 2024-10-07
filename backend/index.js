@@ -55,7 +55,7 @@ app.use("/uploads", express.static(path.resolve("./uploads")));
 // Routes
 app.use("/user", userRoute);
 
-app.use("/news", newsRoute);
+// app.use("/news", newsRoute);
 
 app.use('/comment', commentRoute)
 
@@ -65,6 +65,10 @@ app.use('/comment', commentRoute)
 //     next();
 // });
 ////////
+
+app.get("/news/fetchallnews", (req, res) => {
+    res.json({ news: "hello" });
+})
 
 
 // Listen

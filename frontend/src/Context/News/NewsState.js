@@ -87,15 +87,15 @@ const NewsState = (props) => {
 
             if (response.ok) {
                 const json = await response.json();
-                // console.log(json);
-                if (json.news) {
-                    setNews(json.news);
-                }
+                console.log(json);
+                // if (json.news) {
+                //     setNews(json.news);
+                // }
 
-                else {
-                    console.log(json.Error);
-                    setNews([]);//Reset state when 'news' is missing
-                }
+                // else {
+                //     console.log(json.Error);
+                //     setNews([]);//Reset state when 'news' is missing
+                // }
             }
             else {
                 console.log(`Error fetching news: ${response.status} ${response.statusText}`)
