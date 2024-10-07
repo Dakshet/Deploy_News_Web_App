@@ -1,6 +1,9 @@
 require('dotenv').config()
 
 const express = require("express");
+const cors = require("cors");
+const path = require("path")
+const { handleToDB } = require("./connection");
 
 
 const app = express();
@@ -11,13 +14,24 @@ const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
 // const FRONTEND_URL = "https://deploy-news-web-frontend.vercel.app";
 
 
-// Import
-const cors = require("cors");
-const { handleToDB } = require("./connection");
-const path = require("path")
+// Route Import
 const userRoute = require("./routes/user")
 const newsRoute = require('./routes/news')
 const commentRoute = require("./routes/comment")
+
+// MongoDB connection
+handleToDB(MONGODB_URL).then(() => {
+    console.log("MongoDB Connected Successfully!");
+
+    // Listen
+    app.listen(PORT, () => {
+        console.log(`Server is running on ${PORT}`);
+    });
+
+}).catch((error) => {
+    console.error("Failed to connect to MongoDB:", error.message);
+    process.exit(1); // Exit the process if the DB connection fails
+})
 
 
 // Cors
@@ -36,11 +50,6 @@ app.use(cors({
 //     next();
 // });
 
-
-// MongoDB connection
-handleToDB(MONGODB_URL).then(() => {
-    console.log("DB Connected!")
-})
 
 // Global handling for preflight OPTIONS requests
 // app.options('*', (req, res) => {
@@ -90,7 +99,3 @@ app.use('/comment', commentRoute)
 // })
 
 
-// Listen
-app.listen(PORT, () => {
-    console.log(`Server is running on ${PORT}`);
-});
