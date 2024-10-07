@@ -20,14 +20,15 @@ const commentRoute = require("./routes/comment")
 
 
 // Cors
-app.use(cors({
-    origin: "http://localhost:3000",
-    // methods: ["*"],
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    // allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-}));
+// app.use(cors({
+//     origin: "http://localhost:3000",
+//     // methods: ["*"],
+//     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+//     // allowedHeaders: ["Content-Type", "Authorization"],
+//     credentials: true,
+// }));
 
+app.use(cors());
 
 // Respond to OPTIONS preflight requests
 app.options('*', cors());
