@@ -77,8 +77,8 @@ const NewsState = (props) => {
     //Fetch news for home screen
     const fetchNews = async () => {
         try {
-            // const response = await fetch(`${host}/news/fetchallnews`, {
-            const response = await fetch(`/news/fetchallnews`, {
+            const response = await fetch(`${host}/news/fetchallnews`, {
+                // const response = await fetch(`/news/fetchallnews`, {
                 method: "GET",
                 credentials: "include",
                 headers: {

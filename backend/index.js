@@ -35,13 +35,13 @@ handleToDB(MONGODB_URL).then(() => {
 })
 
 // Global handling for preflight OPTIONS requests
-// app.options('*', (req, res) => {
-//     res.header('Access-Control-Allow-Origin', FRONTEND_URL);
-//     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-//     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-//     res.header('Access-Control-Allow-Credentials', 'true');
-//     res.sendStatus(204); // Respond with no content
-// });
+app.options('*', (req, res) => {
+    res.header('Access-Control-Allow-Origin', FRONTEND_URL);
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.sendStatus(204); // Respond with no content
+});
 
 
 
@@ -56,7 +56,7 @@ app.use("/uploads", express.static(path.resolve("./uploads")));
 // Routes
 app.use("/user", userRoute);
 
-app.use("/news", newsRoute);
+// app.use("/news", newsRoute);
 
 app.use('/comment', commentRoute)
 
@@ -72,15 +72,15 @@ app.use('/comment', commentRoute)
 //     return val;
 // }
 
-// app.get("/news/fetchallnews", async (req, res) => {
-//     if (req.method === 'GET') {
-//         // const posts = await getPosts(); // your logic to get posts
-//         const posts = "hello"
-//         res.status(200).json(posts);
-//     } else {
-//         res.status(405).end(); // Method Not Allowed
-//     }
-// })
+app.get("/news/fetchallnews", async (req, res) => {
+    if (req.method === 'GET') {
+        // const posts = await getPosts(); // your logic to get posts
+        const posts = "hello"
+        res.status(200).json(posts);
+    } else {
+        res.status(405).end(); // Method Not Allowed
+    }
+})
 
 
 // Listen
