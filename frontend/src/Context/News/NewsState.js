@@ -80,10 +80,10 @@ const NewsState = (props) => {
             const response = await fetch(`${host}/news/fetchallnews`, {
                 // const response = await fetch(`/news/fetchallnews`, {
                 method: "GET",
+                // credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
                     'Access-Control-Allow-Origin': '*',
-                    credentials: "include",
                 }
             })
 
