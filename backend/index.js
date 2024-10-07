@@ -21,7 +21,7 @@ const commentRoute = require("./routes/comment")
 
 // Cors
 app.use(cors({
-    origin: FRONTEND_URL,
+    origin: "",
     // methods: ["*"],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     // allowedHeaders: ["Content-Type", "Authorization"],
