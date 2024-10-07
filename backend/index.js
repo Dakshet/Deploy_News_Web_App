@@ -29,6 +29,10 @@ app.use(cors({
 }));
 
 
+// Respond to OPTIONS preflight requests
+app.options('*', cors());
+
+
 // MongoDB connection
 // handleToDB(MONGODB_URL).then(() => {
 //     console.log("DB Connected!")
