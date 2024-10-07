@@ -78,26 +78,23 @@ const NewsState = (props) => {
     const fetchNews = async () => {
         try {
             const response = await fetch(`${host}/news/fetchallnews`, {
-                // const response = await fetch(`/news/fetchallnews`, {
                 method: "GET",
-                // credentials: "include",
                 headers: {
-                    "Content-Type": "application/json",
-                    // 'Access-Control-Allow-Origin': '*',
+                    "Content-Type": "application/json"
                 }
             })
 
             if (response.ok) {
                 const json = await response.json();
-                console.log(json);
-                // if (json.news) {
-                //     setNews(json.news);
-                // }
+                // console.log(json);
+                if (json.news) {
+                    setNews(json.news);
+                }
 
-                // else {
-                //     console.log(json.Error);
-                //     setNews([]);//Reset state when 'news' is missing
-                // }
+                else {
+                    console.log(json.Error);
+                    setNews([]);//Reset state when 'news' is missing
+                }
             }
             else {
                 console.log(`Error fetching news: ${response.status} ${response.statusText}`)
@@ -115,8 +112,8 @@ const NewsState = (props) => {
     const fetchPageSpecificNews = async (pageName) => {
 
         try {
-            // const response = await fetch(`${host}/news/fetchspecificpagenews?tag=${pageName}`, {
-            const response = await fetch(`https://deploy-news-web-backend.vercel.app/news/fetchspecificpagenews?tag=${pageName}`, {
+            const response = await fetch(`${host}/news/fetchspecificpagenews?tag=${pageName}`, {
+                // const response = await fetch(`https://deploy-news-web-backend.vercel.app/news/fetchspecificpagenews?tag=${pageName}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
