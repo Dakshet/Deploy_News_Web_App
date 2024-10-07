@@ -73,7 +73,8 @@ function getPosts() {
 
 app.get("/news/fetchallnews", async (req, res) => {
     if (req.method === 'GET') {
-        const posts = await getPosts(); // your logic to get posts
+        // const posts = await getPosts(); // your logic to get posts
+        const posts = "hello"
         res.status(200).json(posts);
     } else {
         res.status(405).end(); // Method Not Allowed
