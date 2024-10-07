@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const express = require("express");
-// const { handleToDB } = require("./connection");
+const { handleToDB } = require("./connection");
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -37,9 +37,9 @@ app.use(cors({
 
 
 // MongoDB connection
-// handleToDB(MONGODB_URL).then(() => {
-//     console.log("DB Connected!")
-// })
+handleToDB(MONGODB_URL).then(() => {
+    console.log("DB Connected!")
+})
 
 // Global handling for preflight OPTIONS requests
 // app.options('*', (req, res) => {
