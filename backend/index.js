@@ -66,8 +66,18 @@ app.use('/comment', commentRoute)
 // });
 ////////
 
-app.get("/news/fetchallnews", (req, res) => {
-    return res.json({ news: "hello" });
+function getPosts() {
+    let val = "hello"
+    return val;
+}
+
+app.get("/news/fetchallnews", async (req, res) => {
+    if (req.method === 'GET') {
+        const posts = await getPosts(); // your logic to get posts
+        res.status(200).json(posts);
+    } else {
+        res.status(405).end(); // Method Not Allowed
+    }
 })
 
 
