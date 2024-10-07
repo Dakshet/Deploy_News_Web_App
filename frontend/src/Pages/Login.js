@@ -17,24 +17,38 @@ const Login = ({ showAlert }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const response = await fetch(`${host}/user/login`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ email: credentials.email, password: credentials.password })
-        })
-        const json = await response.json();
+        try {
+            const response = await fetch(`${host}/user/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email: credentials.email, password: credentials.password })
+            })
 
-        if (json.success) {
-            showAlert("Successfully Login!", "success");
-            localStorage.setItem('inews', json.token)   //token save in local storeage.
-            loginUserInfo();
-            navigate("/");
+            if (response.ok) {
+                const json = await response.json();
+
+                if (json.success) {
+                    showAlert("Successfully Login!", "success");
+                    localStorage.setItem('inews', json.token)   //token save in local storeage.
+                    loginUserInfo();
+                    navigate("/");
+                }
+                else {
+                    showAlert(json.Error, "error");
+                    // alert(json.Error);
+                }
+            }
+
+            else {
+                console.log(`Error fetching news: ${response.status} ${response.statusText}`)
+                // setCommentNews(commentNews);
+            }
         }
-        else {
-            showAlert(json.Error, "error");
-            // alert(json.Error);
+        catch (error) {
+            console.error("Error fetching the news:", error);
+            // setCommentNews(commentNews);
         }
 
     }

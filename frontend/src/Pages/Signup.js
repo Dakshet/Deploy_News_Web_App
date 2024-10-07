@@ -20,29 +20,45 @@ const Signup = ({ showAlert }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (credentials.password === credentials.cpassword) {
-            const response = await fetch(`${host}/user/signup`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password, profileImageURL: images })
-            })
-            const json = await response.json();
+        try {
+            if (credentials.password === credentials.cpassword) {
 
-            if (json.success) {
-                showAlert("Successfully Account Created!", "success");
-                localStorage.setItem('inews', json.token)   //token save in local storeage.
-                loginUserInfo();
-                navigate("/");
+                const response = await fetch(`${host}/user/signup`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password, profileImageURL: images })
+                })
+
+                if (response.ok) {
+                    const json = await response.json();
+
+                    if (json.success) {
+                        showAlert("Successfully Account Created!", "success");
+                        localStorage.setItem('inews', json.token)   //token save in local storeage.
+                        loginUserInfo();
+                        navigate("/");
+                    }
+                    else {
+                        alert(json.Error);
+                        showAlert(json.Error, "error");
+                    }
+                }
+
+                else {
+                    console.log(`Error fetching news: ${response.status} ${response.statusText}`)
+                    // setCommentNews(commentNews);
+                }
+
             }
             else {
-                alert(json.Error);
-                showAlert(json.Error, "error");
+                showAlert("Enter the correct confirm password!", "error")
             }
         }
-        else {
-            showAlert("Enter the correct confirm password!", "error")
+        catch (error) {
+            console.error("Error fetching the news:", error);
+            // setCommentNews(commentNews);
         }
     }
 

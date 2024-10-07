@@ -38,7 +38,7 @@ handleToDB(MONGODB_URL).then(() => {
 app.use(cors({
     origin: FRONTEND_URL,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization", "auth_token"],
     credentials: true,
 }));
 
