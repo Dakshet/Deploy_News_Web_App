@@ -29,9 +29,22 @@ const commentRoute = require("./routes/comment")
 // }));
 
 app.use(cors());
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*'); // Allow requests from any origin
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+});
+
 
 // Respond to OPTIONS preflight requests
 app.options('*', cors());
+
+app.options('*', (req, res) => {
+    res.status(200).send(); // Always respond with 200 OK
+});
+
+
 
 
 // MongoDB connection
