@@ -40,7 +40,7 @@ const NewsState = (props) => {
     const loginUserInfo = async () => {
 
         try {
-            const response = await fetch(`${host}/user/loginuserdetails`, {
+            const response = await fetch(`/user/loginuserdetails`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
