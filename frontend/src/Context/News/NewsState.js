@@ -5,9 +5,7 @@ import { storeUserLogin } from '../../redux/counter/counterSlice';
 
 const NewsState = (props) => {
 
-    // const host = "http://localhost:5000";
     const host = process.env.REACT_APP_SECRET_KEY;
-    // console.log(host);
 
     const newsInitial = [];
 

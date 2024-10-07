@@ -13,7 +13,7 @@ import DropDownAddMenu from './DropDownAddMenu'
 const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, showSearch, setShowSearch, showAlert }) => {
 
     const navigate = useNavigate();
-    const { setSearchNewsResult, setSpecificNews } = useContext(NewsContext);
+    const { setSearchNewsResult, setSpecificNews, setPageNews } = useContext(NewsContext);
     const [mobileMenu, setMobileMenu] = useState(false);
     const userLoginRedux = useSelector((state) => state.counter.userLogin);
     const dispatch = useDispatch();
@@ -28,6 +28,7 @@ const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, show
         setMobileMenu(false);
         setSearchNewsResult([]);
         setSpecificNews({});
+        setPageNews([]);
     }
 
     const handleLogout = () => {
