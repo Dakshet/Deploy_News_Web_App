@@ -30,9 +30,9 @@ app.use(cors({
 
 
 // MongoDB connection
-handleToDB(MONGODB_URL).then(() => {
-    console.log("DB Connected!")
-})
+// handleToDB(MONGODB_URL).then(() => {
+//     console.log("DB Connected!")
+// })
 
 // Global handling for preflight OPTIONS requests
 app.options('*', (req, res) => {
