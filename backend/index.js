@@ -1,11 +1,11 @@
 require('dotenv').config()
 
 const express = require("express");
-const { handleToDB } = require("./connection");
+// const { handleToDB } = require("./connection");
 
 const app = express();
 const PORT = process.env.PORT || 4000;
-const MONGODB_URL = process.env.MONGODB_URL;
+// const MONGODB_URL = process.env.MONGODB_URL;
 const FRONTEND_URL = process.env.FRONTEND_URL;
 // console.log(FRONTEND_URL);
 // const FRONTEND_URL = "https://deploy-news-web-frontend.vercel.app";
