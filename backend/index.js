@@ -67,7 +67,7 @@ app.use('/comment', commentRoute)
 ////////
 
 app.get("/news/fetchallnews", (req, res) => {
-    res.json({ news: "hello" });
+    return res.json({ news: "hello" });
 })
 
 
