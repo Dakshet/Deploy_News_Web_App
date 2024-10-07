@@ -6,7 +6,7 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 4000;
 // const MONGODB_URL = process.env.MONGODB_URL;
-const FRONTEND_URL = process.env.FRONTEND_URL;
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
 // console.log(FRONTEND_URL);
 // const FRONTEND_URL = "https://deploy-news-web-frontend.vercel.app";
 
@@ -20,13 +20,12 @@ const commentRoute = require("./routes/comment")
 
 
 // Cors
-// app.use(cors({
-//     origin: "http://localhost:3000",
-//     // methods: ["*"],
-//     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-//     // allowedHeaders: ["Content-Type", "Authorization"],
-//     credentials: true,
-// }));
+app.use(cors({
+    origin: FRONTEND_URL,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+}));
 
 app.use(cors());
 app.use((req, res, next) => {
@@ -35,16 +34,6 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
 });
-
-
-// Respond to OPTIONS preflight requests
-app.options('*', cors());
-
-app.options('*', (req, res) => {
-    res.status(200).send(); // Always respond with 200 OK
-});
-
-
 
 
 // MongoDB connection
