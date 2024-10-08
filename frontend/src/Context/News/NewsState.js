@@ -110,6 +110,7 @@ const NewsState = (props) => {
     const fetchPageSpecificNews = async (pageName) => {
 
         try {
+            setPageNews([]);
             const response = await fetch(`${host}/news/fetchspecificpagenews?tag=${pageName}`, {
                 // const response = await fetch(`https://deploy-news-web-backend.vercel.app/news/fetchspecificpagenews?tag=${pageName}`, {
                 method: "GET",

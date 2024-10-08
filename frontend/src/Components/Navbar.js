@@ -13,12 +13,13 @@ import DropDownAddMenu from './DropDownAddMenu'
 const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, showSearch, setShowSearch, showAlert }) => {
 
     const navigate = useNavigate();
-    const { setSearchNewsResult, setSpecificNews, setPageNews } = useContext(NewsContext);
+    const { setSearchNewsResult, setSpecificNews } = useContext(NewsContext);
     const [mobileMenu, setMobileMenu] = useState(false);
     const userLoginRedux = useSelector((state) => state.counter.userLogin);
     const dispatch = useDispatch();
     const location = useLocation();
     const articleId = location.pathname.split("/")[3] || ""; // This will safely handle paths without a third segment
+
 
     const toggleMenu = () => {
         setMobileMenu(!mobileMenu)
@@ -28,7 +29,6 @@ const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, show
         setMobileMenu(false);
         setSearchNewsResult([]);
         setSpecificNews({});
-        setPageNews([]);
     }
 
     const handleLogout = () => {
@@ -121,7 +121,7 @@ const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, show
                 </div>
                 <div className="navbar-right">
                     <ul>
-                        <img onClick={handleUserProfile} src={userLoginRedux.profileImageURL} alt="" />
+                        <img className={`${isUserIsNotLogin ? "hideLogin" : ""}`} onClick={handleUserProfile} src={userLoginRedux.profileImageURL} alt="" />
                         <li className={`${isUserIsNotLogin ? "hideLogin" : ""}`} onClick={handleLogout}>
                             Logout
                         </li>
