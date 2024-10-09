@@ -36,7 +36,9 @@
 
 .logo h2 span {
     color: black;
+    display: inline-block;
 }
+
 
 .socialMediaIcon {
     position: absolute;
@@ -119,10 +121,18 @@
     }
 }
 
+@media (max-width: 462px) {
+    .logoInner {
+        width: 50vw;
+    }
+}
+
 
 @media (max-width:400px) {
     .logoInner {
+        width: 100vw;
         padding: 20px 0px;
+        margin: 7px;
     }
 
     .logo h2 {
@@ -132,5 +142,12 @@
     .logo img {
         width: 30px;
         margin-right: 5px;
+    }
+}
+
+
+@media (max-width: 345px) {
+    .logoInner {
+        width: 50vw;
     }
 }

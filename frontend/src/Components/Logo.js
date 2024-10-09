@@ -10,7 +10,7 @@ const Logo = () => {
                 {/* <img src={logoImage} alt="" /> */}
                 <div className="logoInner">
                     <img src={logo} alt="" />
-                    <h2>Industrial <span>Times</span></h2>
+                    <h2>Industrial <span>Times 24</span></h2>
                 </div>
             </div>
             <div className="socialMediaIcon">
