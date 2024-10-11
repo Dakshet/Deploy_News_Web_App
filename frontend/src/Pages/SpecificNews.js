@@ -117,6 +117,16 @@ const SpecificNews = ({ showAddMenu, showAlert, showProfile }) => {
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
             </Helmet> */}
+
+
+            <Helmet>
+                <meta property="og:title" content="hello" />
+                <meta property="og:site_name" content="hello is am i." />
+                <meta property="og:url" content="https://www.industrialtimes24.in/snews/news/66f3a1b9cd6ac98667313e89" />
+                <meta property="og:description" content="hello i si iautom and ho sdlsl" />
+                <meta property="og:type" content="" />
+                <meta property="og:image" content="http://res.cloudinary.com/dpkaxrntd/image/upload/v1727242172/df85jrwmbue1cjymxoc4.jpg" />
+            </Helmet>
             {/* {console.log(specificNews.coverImageURL)} */}
 
             <UpdateNews showAlert={showAlert} currentNews={currentNews} updateModal={updateModal} setUpdateModal={setUpdateModal} />
