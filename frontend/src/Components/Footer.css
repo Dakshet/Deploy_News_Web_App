@@ -181,7 +181,7 @@
         height: 130px;
         width: 80vw;
         flex-wrap: wrap;
-        background-color: black;
+        /* background-color: black; */
         margin-bottom: 60px;
     }
 
