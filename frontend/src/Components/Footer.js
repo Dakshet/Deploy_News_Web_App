@@ -13,9 +13,19 @@ const Footer = () => {
         <div className='footer'>
             <div className={`${location.pathname === "/" ? "footerPannelOne" : "hideFooter"}`}>
                 <div className="footerOneInner">
-                    <img className='userIcon' src="https://static.vecteezy.com/system/resources/thumbnails/024/183/525/small/avatar-of-a-man-portrait-of-a-young-guy-illustration-of-male-character-in-modern-color-style-vector.jpg" alt="" />
-                    <h1>Jitendra Nate (Editor)</h1>
-                    <p>Communications or Media(Industry)</p>
+                    {/* <img className='userIcon' src="https://static.vecteezy.com/system/resources/thumbnails/024/183/525/small/avatar-of-a-man-portrait-of-a-young-guy-illustration-of-male-character-in-modern-color-style-vector.jpg" alt="" /> */}
+                    <div className="footerOneInnerDiv">
+                        <h1>Jitendra Nate</h1>
+                        <p>Editor & Director</p>
+                    </div>
+                    <div className="footerOneInnerDiv">
+                        <h1>Disha Nate</h1>
+                        <p>Ad Co-Ordinator</p>
+                    </div>
+                    <div className="footerOneInnerDiv">
+                        <h1>Sakshi Rikame</h1>
+                        <p>Graphic Designer</p>
+                    </div>
                 </div>
                 <div className="footerOneInner">
                     <ul>
