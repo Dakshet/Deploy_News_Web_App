@@ -120,7 +120,8 @@ const SpecificNews = ({ showAddMenu, showAlert, showProfile }) => {
 
 
             <Helmet>
-                <meta property="og:title" content="hello" />
+                <title>{specificNews.title}</title>
+                <meta property="og:title" content={specificNews.title} />
                 <meta property="og:site_name" content="hello is am i." />
                 <meta property="og:url" content="https://www.industrialtimes24.in/snews/news/66f3a1b9cd6ac98667313e89" />
                 <meta property="og:description" content="hello i si iautom and ho sdlsl" />
