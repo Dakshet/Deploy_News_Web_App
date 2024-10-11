@@ -37,7 +37,7 @@ const SpecificNews = ({ showAddMenu, showAlert, showProfile }) => {
     useEffect(() => {
         getNewsUsingId(location.pathname.split("/")[3]);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [specificNews.coverImageURL])
 
 
     // Title change
