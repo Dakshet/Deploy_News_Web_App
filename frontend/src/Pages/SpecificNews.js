@@ -120,12 +120,13 @@ const SpecificNews = ({ showAddMenu, showAlert, showProfile }) => {
 
 
             <Helmet>
-                <meta property="og:title" content="hello" />
-                <meta property="og:site_name" content="hello is am i." />
-                <meta property="og:url" content="https://www.industrialtimes24.in/snews/news/66f3a1b9cd6ac98667313e89" />
-                <meta property="og:description" content="hello i si iautom and ho sdlsl" />
-                <meta property="og:type" content="" />
-                <meta property="og:image" content="http://res.cloudinary.com/dpkaxrntd/image/upload/v1727242172/df85jrwmbue1cjymxoc4.jpg" />
+                <title>{specificNews.title}</title>
+                <meta property="og:title" content={specificNews.title} />
+                <meta property="og:site_name" content={specificNews.title} />
+                <meta property="og:url" content={shareUrl} />
+                <meta property="og:description" content={specificNews.body} />
+                <meta property="og:type" content="news" />
+                <meta property="og:image" content={specificNews.coverImageURL} />
             </Helmet>
             {/* {console.log(specificNews.coverImageURL)} */}
 
