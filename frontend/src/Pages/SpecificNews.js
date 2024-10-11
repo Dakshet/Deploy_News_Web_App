@@ -110,9 +110,9 @@ const SpecificNews = ({ showAddMenu, showAlert, showProfile }) => {
                 <title>{specificNews.title}</title>
                 <meta property="og:title" content={specificNews.title} />
                 <meta property="og:description" content={specificNews.body} />
-                {/* <meta property="og:image" content={specificNews.coverImageURL || "http://res.cloudinary.com/dpkaxrntd/image/upload/v1727242172/df85jrwmbue1cjymxoc4.jpg"} /> */}
+                <meta property="og:image" content={specificNews.coverImageURL ? specificNews.coverImageURL : "http://res.cloudinary.com/dpkaxrntd/image/upload/v1727242172/df85jrwmbue1cjymxoc4.jpg"} />
                 {/* <meta property="og:image" content="https://i.pinimg.com/564x/1c/10/ed/1c10eddbfcb523820b6e6f793c403ca3.jpg" /> */}
-                <meta property="og:image" content="https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg" />
+                {/* <meta property="og:image" content="" /> */}
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:url" content={shareUrl} />
