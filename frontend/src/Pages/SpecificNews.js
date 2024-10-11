@@ -3,6 +3,7 @@ import NewsContext from '../Context/News/NewsContext'
 import "./SpecificNews.css"
 import { useLocation, useNavigate } from "react-router-dom"
 import UpdateNews from '../Components/UpdateNews'
+import { Helmet } from "react-helmet";
 // Second copy this import
 import {
     FacebookShareButton,
@@ -104,6 +105,16 @@ const SpecificNews = ({ showAddMenu, showAlert, showProfile }) => {
 
     return (
         <>
+            {/* Set dynamic meta tags */}
+            <Helmet>
+                <title>{specificNews.title}</title>
+                <meta property="og:title" content={specificNews.title} />
+                <meta property="og:description" content={specificNews.body} />
+                <meta property="og:image" content={specificNews.coverImageURL} />
+                <meta property="og:url" content={shareUrl} />
+                <meta property="og:type" content="website" />
+            </Helmet>
+
             <UpdateNews showAlert={showAlert} currentNews={currentNews} updateModal={updateModal} setUpdateModal={setUpdateModal} />
             <div className={`specificNews ${showProfile ? "userMenu" : ""}${showAddMenu ? "showMenu" : ""}`}>
                 <div className="specificNewsInner">
@@ -131,16 +142,20 @@ const SpecificNews = ({ showAddMenu, showAlert, showProfile }) => {
                         </div>
 
                         <div className={`${shareModal ? "shareOption" : "hideSocialMenu"} `}>
-                            <FacebookShareButton url={shareUrl} hashtag='news'>
+
+                            <FacebookShareButton url={shareUrl} quote={specificNews.title} hashtag='news'>
                                 <FacebookIcon size={size} round={true} />
                             </FacebookShareButton>
-                            <WhatsappShareButton url={shareUrl} title={specificNews.title} hashtag="news">
+
+                            <WhatsappShareButton url={shareUrl} title={specificNews.title} separator=":: ">
                                 <WhatsappIcon size={size} round={true} iconFillColor="white" style={{ marginLeft: "10px" }} />
                             </WhatsappShareButton>
+
                             <TwitterShareButton url={shareUrl} title={specificNews.title} hashtag="news">
                                 <TwitterIcon size={size} round={true} iconFillColor="white" style={{ marginLeft: "10px" }} />
                             </TwitterShareButton>
-                            <EmailShareButton url={shareUrl} subject="Share this news" body={specificNews.title}>
+
+                            <EmailShareButton url={shareUrl} subject="Share this news" body={`Check out this news: ${specificNews.title}`}>
                                 <EmailIcon size={size} round={true} style={{ marginLeft: "10px" }} />
                             </EmailShareButton>
                         </div>
