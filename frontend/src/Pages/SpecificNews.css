@@ -262,7 +262,7 @@
     .shareOption {
         position: absolute;
         bottom: 40px;
-        right: -10px;
+        right: 50vw;
         background-color: #011E29;
         padding: 20px 30px;
         display: flex;
@@ -288,6 +288,24 @@
 }
 
 
+@media (max-width:470px) {
+
+    .shareOption {
+        bottom: 40px;
+        right: 200px;
+    }
+}
+
+
+@media (max-width:440px) {
+
+    .shareOption {
+        bottom: 40px;
+        right: 170px;
+    }
+}
+
+
 @media (max-width:400px) {
 
     .specificNewsImage {
@@ -300,5 +318,27 @@
     .specificPara img {
         width: 90vw;
         height: 60vw;
+    }
+
+    .shareOption {
+        position: absolute;
+        bottom: 40px;
+        right: 130px;
+        /* background-color: #011E29; */
+        /* background-color: red; */
+        padding: 20px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+    }
+}
+
+
+@media (max-width:370px) {
+
+    .shareOption {
+        bottom: 40px;
+        right: 90px;
     }
 }
