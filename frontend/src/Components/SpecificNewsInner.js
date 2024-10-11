@@ -91,7 +91,7 @@ const SpecificNewsInner = ({ title, shareUrl, body, image, showAddMenu, showProf
 
                         <div className={`${shareModal ? "shareOption" : "hideSocialMenu"} `}>
 
-                            <FacebookShareButton url={shareUrl} quote={title} hashtag='news'>
+                            <FacebookShareButton url={shareUrl} title={title} hashtag='#news'>
                                 <FacebookIcon size={size} round={true} />
                             </FacebookShareButton>
 
