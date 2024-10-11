@@ -110,8 +110,8 @@ const SpecificNews = ({ showAddMenu, showAlert, showProfile }) => {
                 <title>{specificNews.title}</title>
                 <meta property="og:title" content={specificNews.title} />
                 <meta property="og:description" content={specificNews.body} />
-                {/* <meta property="og:image" content={specificNews.coverImageURL} /> */}
-                <meta property="og:image" content="https://i.pinimg.com/564x/1c/10/ed/1c10eddbfcb523820b6e6f793c403ca3.jpg" />
+                <meta property="og:image" content={specificNews.coverImageURL || "https://i.pinimg.com/564x/1c/10/ed/1c10eddbfcb523820b6e6f793c403ca3.jpg"} />
+                {/* <meta property="og:image" content="https://i.pinimg.com/564x/1c/10/ed/1c10eddbfcb523820b6e6f793c403ca3.jpg" /> */}
                 <meta property="og:url" content={shareUrl} />
                 <meta property="og:type" content="website" />
             </Helmet>
