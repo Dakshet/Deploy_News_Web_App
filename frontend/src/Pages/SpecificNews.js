@@ -112,11 +112,12 @@ const SpecificNews = ({ showAddMenu, showAlert, showProfile }) => {
                 <meta property="og:description" content={specificNews.body} />
                 <meta property="og:image" content={specificNews.coverImageURL || "http://res.cloudinary.com/dpkaxrntd/image/upload/v1727242172/df85jrwmbue1cjymxoc4.jpg"} />
                 {/* <meta property="og:image" content="https://i.pinimg.com/564x/1c/10/ed/1c10eddbfcb523820b6e6f793c403ca3.jpg" /> */}
-                {/* <meta property="og:image:width" content="1200" />
-                <meta property="og:image:height" content="630" /> */}
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
                 <meta property="og:url" content={shareUrl} />
                 <meta property="og:type" content="website" />
             </Helmet>
+            {console.log(specificNews.coverImageURL)}
 
             <UpdateNews showAlert={showAlert} currentNews={currentNews} updateModal={updateModal} setUpdateModal={setUpdateModal} />
             <div className={`specificNews ${showProfile ? "userMenu" : ""}${showAddMenu ? "showMenu" : ""}`}>
