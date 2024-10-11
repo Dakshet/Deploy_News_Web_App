@@ -181,8 +181,8 @@
         height: 130px;
         width: 80vw;
         flex-wrap: wrap;
-        /* background-color: black; */
-        margin-bottom: 90px;
+        background-color: black;
+        margin-bottom: 60px;
     }
 
     .footerOneInnerx {
