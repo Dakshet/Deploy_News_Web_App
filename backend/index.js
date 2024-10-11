@@ -4,12 +4,19 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path")
 const { handleToDB } = require("./connection");
+const prerender = require('prerender-node');
+
+
+// Add your prerender.io token here
+prerender.set('prerenderToken', 'YOUR_PRERENDER_TOKEN');
+
 
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 const MONGODB_URL = process.env.MONGODB_URL;
-const FRONTEND_URL = process.env.FRONTEND_URL || "https://www.industrialtimes24.in";
+// const FRONTEND_URL = process.env.FRONTEND_URL || "https://www.industrialtimes24.in";
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
 // console.log(FRONTEND_URL);
 // const FRONTEND_URL = "https://deploy-news-web-frontend.vercel.app";
 
@@ -42,6 +49,7 @@ app.use(cors({
     credentials: true,
 }));
 
+app.use(prerender);
 
 // app.use((req, res, next) => {
 //     res.header('Access-Control-Allow-Origin', '*'); // Allow requests from any origin
