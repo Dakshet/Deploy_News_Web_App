@@ -3,8 +3,7 @@ import NewsContext from '../Context/News/NewsContext'
 import "./SpecificNews.css"
 import { useLocation, useNavigate } from "react-router-dom"
 import UpdateNews from '../Components/UpdateNews'
-import { Helmet } from "react-helmet";
-import logoImage from '../Images/logoImage.jpg'
+// import { Helmet } from "react-helmet";
 // Second copy this import
 import {
     FacebookShareButton,
@@ -107,19 +106,18 @@ const SpecificNews = ({ showAddMenu, showAlert, showProfile }) => {
     return (
         <>
             {/* Set dynamic meta tags */}
-            <Helmet>
+            {/* <Helmet>
                 <title>{specificNews.title}</title>
                 <meta property="og:title" content={specificNews.title} />
                 <meta property="og:url" content={shareUrl} />
-                <meta property="og:description" content={specificNews.title} />
-                {/* <meta property="og:image" content={specificNews.coverImageURL || "http://res.cloudinary.com/dpkaxrntd/image/upload/v1727242172/df85jrwmbue1cjymxoc4.jpg"} /> */}
-                <meta property="og:type" content="website" />
+                <meta property="og:description" content={specificNews.title} /> */}
+            {/* <meta property="og:image" content={specificNews.coverImageURL || "http://res.cloudinary.com/dpkaxrntd/image/upload/v1727242172/df85jrwmbue1cjymxoc4.jpg"} /> */}
+            {/* <meta property="og:type" content="website" />
                 <meta property="og:image" content={"http://res.cloudinary.com/dpkaxrntd/image/upload/v1727242172/df85jrwmbue1cjymxoc4.jpg"} />
-                {/* <meta property="og:image" content="https://i.pinimg.com/564x/1c/10/ed/1c10eddbfcb523820b6e6f793c403ca3.jpg" /> */}
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
-            </Helmet>
-            {console.log(specificNews.coverImageURL)}
+            </Helmet> */}
+            {/* {console.log(specificNews.coverImageURL)} */}
 
             <UpdateNews showAlert={showAlert} currentNews={currentNews} updateModal={updateModal} setUpdateModal={setUpdateModal} />
             <div className={`specificNews ${showProfile ? "userMenu" : ""}${showAddMenu ? "showMenu" : ""}`}>
