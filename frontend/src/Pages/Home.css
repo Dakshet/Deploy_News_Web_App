@@ -495,14 +495,14 @@
 
 @media (max-width:1090px) {
     .container {
-        height: 3730px;
+        height: 3400px;
+        /* background-color: rebeccapurple; */
     }
 
     /* ----------------- News Content */
     .newsBoxContent {
         flex-direction: column;
         height: 1020px;
-        /* background-color: rebeccapurple; */
     }
 
     .newsBoxContentLeft {
@@ -608,7 +608,7 @@
     .magazineInnerBox {
         width: 28vw;
         height: 340px;
-        margin: 0px 3.5vw 30px;
+        margin: 0px 3vw 30px;
         /* background-color: antiquewhite; */
         position: relative;
     }
@@ -642,6 +642,7 @@
 @media (max-width:800px) {
     .container {
         height: 3930px;
+        /* background-color: red; */
     }
 
     .articleAndInterviewBox {
@@ -656,6 +657,18 @@
     .articleBoxContent {
         flex-direction: column;
         margin-bottom: 10px;
+    }
+
+    .articleBoxContentLeft img {
+        width: 500px;
+        height: 400px;
+        display: block;
+        margin: 0px auto;
+    }
+
+    .articleBoxContentLeft p {
+        /* background-color: rgb(84, 192, 79); */
+        left: 30px;
     }
 
     .articleInnerBox {
@@ -695,7 +708,7 @@
     .magazineInnerBox {
         width: 32vw;
         height: 300px;
-        margin: 0px 1.5vw 20px;
+        margin: 0px 1vw 20px;
         /* background-color: antiquewhite; */
         position: relative;
     }
@@ -856,7 +869,7 @@
     .magazineInnerBox {
         width: 43vw;
         height: 300px;
-        margin: 0px 1vw 30px;
+        margin: 0px 0.2vw 30px;
         /* background-color: antiquewhite; */
         /* box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1); */
     }
