@@ -64,41 +64,41 @@ const AddMagazine = ({ showAlert, showProfile, showAddMenu }) => {
         }
     }
 
-    const postPdf = async (PDF) => {
-        // console.log(typeof (PDF))
+    // const postPdf = async (PDF) => {
+    //     // console.log(typeof (PDF))
 
-        const formData = new FormData();
-        formData.append("file", PDF);
-        formData.append("upload_preset", Upload_Preset_PDF);
-        formData.append("cloud_name", Cloud_Name);
+    //     const formData = new FormData();
+    //     formData.append("file", PDF);
+    //     formData.append("upload_preset", Upload_Preset_PDF);
+    //     formData.append("cloud_name", Cloud_Name);
 
-        try {
-            const response = await fetch("https://api.cloudinary.com/v1_1/dpkaxrntd/raw/upload", {
-                method: "post",
-                body: formData,
-            })
+    //     try {
+    //         const response = await fetch("https://api.cloudinary.com/v1_1/dpkaxrntd/raw/upload", {
+    //             method: "post",
+    //             body: formData,
+    //         })
 
-            if (response.ok) {
-                const json = await response.json();
+    //         if (response.ok) {
+    //             const json = await response.json();
 
-                if (json.secure_url) {
-                    setBody(json.secure_url);
-                    console.log(json.secure_url)
-                    // console.log(json.secure_url);
-                }
-                else {
-                    console.log(json.Error);
-                }
-            }
+    //             if (json.secure_url) {
+    //                 setBody(json.secure_url);
+    //                 console.log(json.secure_url)
+    //                 // console.log(json.secure_url);
+    //             }
+    //             else {
+    //                 console.log(json.Error);
+    //             }
+    //         }
 
-            else {
-                console.log(`Error fetching news: ${response.status} ${response.statusText}`)
-            }
+    //         else {
+    //             console.log(`Error fetching news: ${response.status} ${response.statusText}`)
+    //         }
 
-        } catch (error) {
-            console.error("Error fetching the news:", error);
-        }
-    }
+    //     } catch (error) {
+    //         console.error("Error fetching the news:", error);
+    //     }
+    // }
 
     // Title change
     useEffect(() => {
@@ -115,8 +115,8 @@ const AddMagazine = ({ showAlert, showProfile, showAddMenu }) => {
                     <form action="" onSubmit={handleSubmit}>
                         <label htmlFor="image">Cover Image(JPEG/JPG/PNG)</label>
                         <input type="file" name='image' id='image' required onChange={(e) => postImage(e.target.files[0])} />
-                        <label htmlFor="title">Upload Magazine(PDF)</label>
-                        <input type="file" accept='application/pdf' onChange={(e) => postPdf(e.target.files[0])} required />
+                        <label htmlFor="title">Upload Magazine(PDF) Link</label>
+                        <input type="text" name='body' id='body' onChange={(e) => setBody(e.target.value)} required />
                         <label htmlFor="title">Title</label>
                         <input type="text" name='title' id='title' required onChange={(e) => setTitle(e.target.value)} minLength={3} />
                         <input className='submitBtn' disabled={images.length === 0 || body.length === 0} type="submit" value={images.length === 0 ? "Upload Image" : body.length === 0 ? "Upload PDF" : "POST"} />

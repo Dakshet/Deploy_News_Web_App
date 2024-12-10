@@ -1,25 +1,27 @@
-.magazine {
+.event {
     /* background-color: lightblue; */
     padding: 0 15%;
     margin-top: 40px;
     min-height: 61vh;
 }
 
-.magazine.userMenu {
+
+.event.userMenu {
     /* background-color: blue; */
-    margin-top: -190px;
+    margin-top: -203px;
 }
 
-.magazine.showMenu {
-    margin-top: -50px;
+.event.showMenu {
+    margin-top: -39px;
 }
 
 
-.magazineContainer {
+.eventContainer {
     height: 100%;
+    /* background-color: beige; */
 }
 
-.magazineContainer h3 {
+.eventContainer h3 {
     display: inline-block;
     padding: 8px 15px;
     background-color: #011E29;
@@ -29,29 +31,7 @@
 }
 
 
-.magazineHeader {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.magazineHeader img {
-    width: 75px;
-    height: 33px;
-    border: 4px solid #011E29;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    cursor: pointer;
-}
-
-.magazineHeader img:hover {
-    border: 4px solid red;
-}
-
-
-.magazineContainer hr {
+.eventContainer hr {
     background-color: #011E29;
     flex: 1;
     border: none;
@@ -60,11 +40,10 @@
 }
 
 
-/* ---------------------------------------------- Magazine Container Inner */
+/* ---------------------------------------------------- Event Container Inner */
 
 
-
-.magazineContainerInner {
+.eventContainerInner {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -79,24 +58,16 @@
 /* ---------------------------------------------------- Start Event Particular Box */
 
 
-.magazineParticularBoxOuter {
-    position: relative;
-    background-color: transparent;
+.eventParticularBox {
     margin: 20px 1.1vw 10px;
-    width: 20.8vw;
-    height: 350px;
-    border-radius: 10px;
-}
-
-
-.magazineParticularBox {
     padding: 15px 15px 30px;
     background-color: white;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    width: 100%;
-    height: 100%;
+    /* width: 1000px; */
+    width: 20.8vw;
+    height: 350px;
     border: 2px dotted #ccc;
     transition: all 0.5s;
     position: relative;
@@ -104,11 +75,11 @@
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-.magazineParticularBox:hover {
+.eventParticularBox:hover {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-.magazineParticularBox img {
+.eventParticularBox img {
     width: 18vw;
     height: 200px;
     margin: 0 auto 5px;
@@ -116,22 +87,22 @@
     border-radius: 10px;
 }
 
-.magazineParticularBox img:hover {
+.eventParticularBox img:hover {
     transform: scale(0.97);
 }
 
-.magazineParticularBox h5 {
+.eventParticularBox h5 {
     width: 17vw;
     margin: 20px auto 10px;
     font-size: 16px;
     /* background-color: rebeccapurple; */
 }
 
-.magazineParticularBox h5:hover {
+.eventParticularBox h5:hover {
     text-decoration: underline;
 }
 
-.magazineParticularTimeDate {
+.eventParticularTimeDate {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -145,55 +116,32 @@
     /* background-color: rebeccapurple; */
 }
 
-.closeIcon {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    margin-right: -10px;
-    margin-top: -11px;
-    font-size: 18px;
-    border-radius: 50%;
-    background-color: #011E29;
-    color: white;
-    padding: 2px;
-}
-
-.closeIcon:hover {
-    background-color: #011E29;
-    color: red
-}
-
-
 
 /* ---------------------------- Media Queries */
 
 
 @media (max-width:1050px) {
 
-    .magazineParticularBoxOuter {
-        margin: 20px 1.14vw 10px;
-        width: 20.8vw;
-        height: 350px;
-        border-radius: 10px;
-    }
-
-
-    .magazineParticularBox {
+    .eventParticularBox {
         padding: 0px 0px 0px;
         overflow: hidden;
+        margin: 20px 1.14vw 10px;
+        width: 21vw;
+        height: 310px;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
     }
 
-    .magazineParticularBox img {
+    .eventParticularBox img {
         width: 20.5vw;
     }
 
-    .magazineParticularBox h5 {
+    .eventParticularBox h5 {
+        /* background-color: blue; */
         width: 20vw;
         margin-top: 10px;
     }
 
-    .magazineParticularTimeDate {
+    .eventParticularTimeDate {
         display: block;
         bottom: 4px;
         /* background-color: blue; */
@@ -202,45 +150,30 @@
         justify-content: space-between;
     }
 
-    .closeIcon {
-        top: 0px;
-        right: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        font-size: 18px;
-        border-radius: 50%;
-        background-color: #011E29;
-        color: white;
-        padding: 2px;
-    }
-
 }
 
 @media (max-width:900px) {
 
-    .magazineParticularBoxOuter {
+    .eventParticularBox {
+        padding: 0px 0px 30px;
         margin: 0px 1.5vw 30px;
         width: 32vw;
         height: 300px;
     }
 
-    .magazineParticularBox {
-        padding: 0px 0px 30px;
-    }
-
-    .magazineParticularBox img {
+    .eventParticularBox img {
         width: 32vw;
         height: 200px;
     }
 
-    .magazineParticularBox h5 {
+    .eventParticularBox h5 {
         width: 30vw;
         margin: 10px auto 10px;
         font-size: 15px;
         /* background-color: blue; */
     }
 
-    .magazineParticularTimeDate {
+    .eventParticularTimeDate {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -248,64 +181,70 @@
         bottom: 10px;
         font-size: 13px;
         margin-left: 6px;
+        /* background-color: rebeccapurple; */
     }
 }
 
 
 @media (max-width:650px) {
-    .magazine {
+    .event {
         padding: 0 5%;
     }
 
-    .magazineParticularBoxOuter {
-        margin: 0px 1vw 20px;
+    .eventParticularBox {
+        margin: 00px 1vw 20px;
         width: 43vw;
         height: 280px;
     }
 
-    .magazineParticularBox img {
+    .eventParticularBox img {
         width: 43vw;
         height: 180px;
     }
 
-    .magazineParticularBox h5 {
+    .eventParticularBox h5 {
         width: 40vw;
         margin: 10px auto 10px;
         font-size: 14px;
+        /* background-color: blue; */
     }
 
-    .magazineParticularTimeDate {
+    .eventParticularTimeDate {
         width: 40vw;
         margin-left: 1vw;
         bottom: 10px;
         font-size: 11px;
+        /* background-color: lightblue; */
     }
 }
 
 
 @media (max-width:450px) {
 
-    .magazineParticularBoxOuter {
+    .eventParticularBox {
         margin: 0px 3.8vw 20px;
+        /* padding: 20px 1vw 20px; */
         width: 100vw;
         height: 270px;
     }
 
-    .magazineParticularBox img {
+    .eventParticularBox img {
         width: 82vw;
         height: 180px;
     }
 
-    .magazineParticularBox h5 {
+    .eventParticularBox h5 {
         width: 75vw;
         margin: 10px auto 10px;
         font-size: 14px;
+        /* background-color: blue; */
     }
 
-    .magazineParticularTimeDate {
+    .eventParticularTimeDate {
         width: 75vw;
         margin-left: 3vw;
         bottom: 10px;
         font-size: 11px;
+        /* background-color: lightblue; */
     }
 }

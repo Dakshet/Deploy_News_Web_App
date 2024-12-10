@@ -1,7 +1,7 @@
 const express = require("express");
 const { body } = require("express-validator");
 const { fetchUser } = require("../middlewares/fetchUser");
-const { addNews, updateNews, deleteNews, fetchSpecificNews, fetchAllNewsForHomePage, fetchAllNewsForSpecificRoute, fetchSearchNews, addMagazine, deleteMagazine } = require("../controllers/news");
+const { addNews, updateNews, deleteNews, fetchSpecificNews, fetchAllNewsForHomePage, fetchAllNewsForSpecificRoute, fetchSearchNews, addMagazine, deleteMagazine, countVisitNumber } = require("../controllers/news");
 
 const router = express.Router();
 
@@ -26,5 +26,7 @@ router.put("/updatenews/:newsId", fetchUser, updateNews)
 router.delete("/deletenews", fetchUser, deleteNews)
 
 router.delete("/deletemagazine", fetchUser, deleteMagazine)
+
+router.put("/updatecount", countVisitNumber)
 
 module.exports = router;

@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from 'react'
 import "./Magazine.css"
 import NewsContext from '../Context/News/NewsContext';
 import MagazineItem from '../Components/MagazineItem';
+import issuuImage from '../Images/issuuImage1.png'
+import { Link } from 'react-router-dom';
 
 const Magazine = ({ showProfile, showAddMenu, showAlert }) => {
     const { pageNews, fetchPageSpecificNews } = useContext(NewsContext);
@@ -26,7 +28,10 @@ const Magazine = ({ showProfile, showAddMenu, showAlert }) => {
     return (
         <div className={`magazine ${showProfile ? "userMenu" : ""} ${showAddMenu ? "showMenu" : ""}`}>
             <div className="magazineContainer">
-                <h3>Magazine</h3>
+                <div className="magazineHeader">
+                    <h3>Magazine</h3>
+                    <Link to="https://issuu.com/raigadmat" target='_blank'><img src={issuuImage} alt="" /></Link>
+                </div>
                 <hr />
                 <div className="magazineContainerInner">
                     {pageNews.map((mNews) => {

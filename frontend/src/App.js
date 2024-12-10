@@ -14,6 +14,7 @@ import News from './Pages/News';
 import Article from './Pages/Article';
 import Interview from './Pages/Interview';
 import Event from './Pages/Event';
+import Job from './Pages/Job';
 import Magazine from './Pages/Magazine';
 import SpecificNews from './Pages/SpecificNews';
 import ScrollToTop from './Components/ScrollToTop';
@@ -60,6 +61,7 @@ function App() {
             <Route exact path='/article' element={<Article showProfile={showProfile} showAddMenu={showAddMenu} />} />
             <Route exact path='/interview' element={<Interview showProfile={showProfile} showAddMenu={showAddMenu} />} />
             <Route exact path='/event' element={<Event showProfile={showProfile} showAddMenu={showAddMenu} />} />
+            <Route exact path='/job' element={<Job showProfile={showProfile} showAddMenu={showAddMenu} />} />
             <Route exact path='/magazine' element={<Magazine showProfile={showProfile} showAddMenu={showAddMenu} showAlert={showAlert} />} />
             <Route exact path='/snews/:tag/:id' element={<SpecificNews showProfile={showProfile} showAddMenu={showAddMenu} showAlert={showAlert} />} />
             <Route exact path='/addnews' element={<AddNews showProfile={showProfile} showAddMenu={showAddMenu} showAlert={showAlert} />} />

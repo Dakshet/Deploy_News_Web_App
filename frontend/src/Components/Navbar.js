@@ -84,6 +84,9 @@ const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, show
                         <li onClick={handleClick} className={`${location.pathname === `/snews/event/${articleId}` ? 'activeNav' : location.pathname === '/event' ? 'activeNav' : ''}`}>
                             <Link to="/event">Event</Link>
                         </li>
+                        <li onClick={handleClick} className={`${location.pathname === `/snews/job/${articleId}` ? 'activeNav' : location.pathname === '/job' ? 'activeNav' : ''}`}>
+                            <Link to="/job">Jobs</Link>
+                        </li>
                         <li onClick={handleClick} className={`${location.pathname === '/magazine' ? 'activeNav' : ''}`}>
                             <Link to="/magazine">Magazine</Link>
                         </li>

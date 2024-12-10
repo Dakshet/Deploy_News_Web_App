@@ -505,10 +505,52 @@ const NewsState = (props) => {
             console.error("Error fetching the news:", error);
             setSearchNewsResult([]);
         }
+    }
+
+
+
+    //Count Visit
+    const visitCounter = async () => {
+
+        const date = new Date();
+        let monthInNum = date.getMonth();
+
+        try {
+
+            const response = await fetch(`${host}/news/updatecount?month=${monthInNum}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            })
+
+            if (response.ok) {
+                const json = await response.json();
+
+                if (json.count) {
+                    // console.log(json.count);
+
+                }
+
+                else {
+                    console.log(json.Error);
+                }
+            }
+
+            else {
+                console.log(`Error counting news: ${response.status} ${response.statusText}`)
+            }
+
+        } catch (error) {
+            console.error("Error counting the news:", error);
+        }
+
 
     }
 
-    return (<NewsContext.Provider value={{ news, fetchNews, pageNews, setPageNews, fetchPageSpecificNews, getNewsUsingId, specificNews, setSpecificNews, addNews, deleteNews, editNews, commentNews, fetchComment, addComment, searchNewsResult, setSearchNewsResult, fetchSearchNews, loginUserInfo, addMagazine, deleteMagazine }}>
+
+
+    return (<NewsContext.Provider value={{ news, fetchNews, pageNews, setPageNews, fetchPageSpecificNews, getNewsUsingId, specificNews, setSpecificNews, addNews, deleteNews, editNews, commentNews, fetchComment, addComment, searchNewsResult, setSearchNewsResult, fetchSearchNews, loginUserInfo, addMagazine, deleteMagazine, visitCounter }}>
         {props.children}
     </NewsContext.Provider>
     )

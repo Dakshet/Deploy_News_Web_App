@@ -2,6 +2,7 @@ const { validationResult } = require("express-validator");
 const News = require("../models/news");
 const cloudinary = require("../middlewares/cloudinary")
 const fs = require('fs');
+const CountVisit = require("../models/countVisit");
 
 let success = false;
 
@@ -377,6 +378,47 @@ async function deleteMagazine(req, res) {
     }
 }
 
+
+
+
+async function countVisitNumber(req, res) {
+    try {
+        //Verified the news id first
+        let month = req.query.month;
+        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const monthName = monthNames[month];
+
+
+        // let createMonth = await CountVisit.create({
+        //     month: "Nov",
+        //     count: 0,
+        // })
+
+        // createMonth = await CountVisit.save();
+
+        // console.log(createMonth);
+
+
+        let news = await CountVisit.findOneAndUpdate({
+            month: monthName
+        }, {
+            $inc: { count: 1 }
+        });
+
+        // console.log(news);
+
+
+        //Final
+        success = true;
+        return res.status(200).json({ success, count: "Successfully count" })
+
+    } catch (error) {
+        console.log(error.message);
+        success = false;
+        return res.status(500).json({ success, Error: "Internal Server Error Occured!" })
+    }
+}
+
 module.exports = {
     fetchAllNewsForHomePage,
     addNews,
@@ -387,4 +429,5 @@ module.exports = {
     fetchSearchNews,
     addMagazine,
     deleteMagazine,
+    countVisitNumber
 }

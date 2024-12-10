@@ -196,6 +196,7 @@ const AddNews = ({ showAlert, showProfile, showAddMenu }) => {
                             <option value="ARTICLE">Article</option>
                             <option value="INTERVIEW">Interview</option>
                             <option value="EVENT">Event</option>
+                            <option value="JOB">Job</option>
                         </select>
                         <input className='submitBtn' disabled={images.length === 0 || description === ""} type="submit" value={images.length === 0 ? "Upload Image" : (description === "" ? "Enter Description" : "Post")} />
                     </form>

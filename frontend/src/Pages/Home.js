@@ -7,7 +7,7 @@ const Home = ({ showProfile, showAddMenu }) => {
 
     const navigate = useNavigate();
 
-    const { fetchNews, news } = useContext(NewsContext);
+    const { fetchNews, news, visitCounter } = useContext(NewsContext);
 
     const newss = news && news.filter(item => item.tag === "NEWS");
     const articles = news && news.filter(item => item.tag === "ARTICLE");
@@ -29,6 +29,7 @@ const Home = ({ showProfile, showAddMenu }) => {
 
     useEffect(() => {
         fetchNews()
+        visitCounter()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
