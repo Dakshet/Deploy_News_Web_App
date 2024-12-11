@@ -129,8 +129,10 @@ const AddMagazine = ({ showAlert, showProfile, showAddMenu }) => {
                         <label htmlFor="image">Cover Image(JPEG/JPG/PNG)</label>
                         <input type="file" name='image' id='image' required onChange={(e) => postImage(e.target.files[0])} />
                         <label htmlFor="title">Upload Magazine</label>
-                        <button className='uploadBtn' onClick={handleLinks}>Upload link</button>
-                        <button className='uploadBtn' onClick={handlePdfs}>Upload Pdf</button>
+                        <div className="uploadButtons">
+                            <button className='uploadBtn' onClick={handleLinks}>Upload link</button>
+                            <button className='uploadBtn' onClick={handlePdfs}>Upload Pdf</button>
+                        </div>
                         {pdfs && <input type="file" accept='application/pdf' onChange={(e) => postPdf(e.target.files[0])} required />}
                         {links && <input type="text" name='body' id='body' onChange={(e) => setBody(e.target.value)} required />}
                         <label id='titleCss' htmlFor="title">Title</label>
