@@ -121,7 +121,7 @@ const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, show
                                     <i className="ri-whatsapp-line"></i>
                                 </a>
                                 <a
-                                    href="mailto:dakshghole@gmail.com"
+                                    href="mailto:industrialtimes24@gmail.com"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
