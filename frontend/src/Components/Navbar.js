@@ -113,11 +113,32 @@ const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, show
                         </li>
                         <li>
                             <div className="socialMediaIconx hideField">
-                                <Link target='_blank' to="www.industrialtimes24@gmail.com"><i className="ri-mail-line"></i></Link>
-                                <Link target='_blank' to="https://youtube.com/@industrialtimes24?si=n67pYl2TJSSpb0bD"><i className="ri-youtube-line"></i></Link>
-                                <Link target='_blank' to="https://www.linkedin.com/in/industrial-times-7ab62431a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i className="ri-linkedin-box-line"></i></Link>
-                                <Link target='_blank' to="https://www.facebook.com/"><i className="ri-facebook-box-line"></i></Link>
-                                <Link target='_blank' to="https://www.instagram.com/"><i className="ri-instagram-line"></i></Link>
+                                <a
+                                    href="https://wa.me/+918652654519?text=Hello%20Industrial%20Times!"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <i className="ri-whatsapp-line"></i>
+                                </a>
+                                <a
+                                    href="mailto:dakshghole@gmail.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <i className="ri-mail-line"></i>
+                                </a>
+                                <a href="https://youtube.com/@industrialtimes24?si=n67pYl2TJSSpb0bD" target="_blank" rel="noopener noreferrer">
+                                    <i className="ri-youtube-line"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/industrial-times-7ab62431a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">
+                                    <i className="ri-linkedin-box-line"></i>
+                                </a>
+                                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                                    <i className="ri-facebook-box-line"></i>
+                                </a>
+                                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                                    <i className="ri-instagram-line"></i>
+                                </a>
                             </div>
                         </li>
                     </ul>

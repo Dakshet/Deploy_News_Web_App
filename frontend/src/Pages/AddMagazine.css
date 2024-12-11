@@ -83,6 +83,24 @@ select {
 
 
 
+.uploadBtn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #022c3d;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-right: 3px;
+    margin-top: 10px;
+}
+
+#titleCss {
+    display: block;
+    margin-top: 20px;
+}
+
+
 
 /* ------------------------Responsive Design-------*/
 
