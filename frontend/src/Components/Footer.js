@@ -42,6 +42,34 @@ const Footer = () => {
                         <li><img src={mail_icon} alt="" />industrialtimes24@gmail.com </li>
                         <li><img src={phone_icon} alt="" />+91 8652654519</li>
                         <li><img src={location_icon} alt="" />B-202, Today Royal Elisum,<br /> Sector - 2, Karanjade, <br /> Navi Mumbai - 410206</li>
+                        <li className='footerSocialIcon'>
+                            <a
+                                href="https://wa.me/+918652654519?text=Hello%20Industrial%20Times!"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <i className="ri-whatsapp-line"></i>
+                            </a>
+                            <a
+                                href="mailto:industrialtimes24@gmail.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <i className="ri-mail-line"></i>
+                            </a>
+                            <a href="https://youtube.com/@industrialtimes24?si=n67pYl2TJSSpb0bD" target="_blank" rel="noopener noreferrer">
+                                <i className="ri-youtube-line"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/industrial-times-7ab62431a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">
+                                <i className="ri-linkedin-box-line"></i>
+                            </a>
+                            <a href="https://www.facebook.com/61570010956901/posts/122105459990667031" target="_blank" rel="noopener noreferrer">
+                                <i className="ri-facebook-box-line"></i>
+                            </a>
+                            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                                <i className="ri-instagram-line"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

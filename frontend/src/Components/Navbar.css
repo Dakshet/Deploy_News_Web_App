@@ -228,7 +228,8 @@
     }
 
     .navbar-center ul li {
-        margin-top: 25px;
+        /* margin-top: 25px; */
+        margin-top: 2.5vh;
         margin-left: 70px;
         display: block;
     }
