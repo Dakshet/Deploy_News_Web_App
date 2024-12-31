@@ -24,6 +24,7 @@ import Signup from './Pages/Signup';
 import SearchNews from './Pages/SearchNews';
 import Alert from './Components/Alert';
 import AddMagazine from './Pages/AddMagazine';
+import AdSection from './Components/AdSection';
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
         <Router>
           <Logo />
           <Navbar showAddMenu={showAddMenu} setShowAddMenu={setShowAddMenu} showAlert={showAlert} showProfile={showProfile} setShowProfile={setShowProfile} showSearch={showSearch} setShowSearch={setShowSearch} />
+          <AdSection />
           <ScrollToTop />
           <Routes>
 
