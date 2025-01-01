@@ -7,8 +7,6 @@ const { handleToDB } = require("./connection");
 const prerender = require('prerender-node');
 
 
-
-
 const app = express();
 const PORT = process.env.PORT || 4000;
 const MONGODB_URL = process.env.MONGODB_URL;
