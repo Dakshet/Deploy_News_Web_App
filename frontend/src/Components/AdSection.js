@@ -1,12 +1,5 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import './AdSection.css';
-import ad10 from '../Images/ad10.jpg';
-import ad12 from '../Images/ad12.jpg';
-import ad13 from '../Images/ad13.jpg';
-import ad4 from '../Images/ad4.jpg';
-import ad5 from '../Images/ad5.jpg';
-import ad8 from '../Images/ad8.jpg';
-import ad11 from '../Images/ad11.jpg';
 import backIcon from '../Images/back-icon.png';
 import nextIcon from '../Images/next-icon.png';
 import NewsContext from '../Context/News/NewsContext';
@@ -71,29 +64,31 @@ const AdSection = () => {
     // console.log(currentIndex)
 
     return (
-        <div className="adSection">
-            {/* <div className="adButtons"> */}
-            <img src={backIcon} alt="Back" id='backIcon' className='adBtn' onClick={handleBackBtn} />
-            {/* </div> */}
-            <div className="slider" ref={slider}>
-                {seeAds.map((slide, index) => (
-                    <div
-                        className="slide"
-                        key={index}
-                        style={{
-                            transform: `translateX(${-currentIndex * 100}%)`,
-                        }}
-                    >
-                        <a href={slide.body} target="_blank" rel="noopener noreferrer">
-                            <img src={slide.coverImageURL} alt={`Advertisement ${index + 1}`} />
-                            <p className='adImageBtn'>Click For More Details</p>
-                        </a>
+        <>
+            {seeAds.length === 0 ? "" :
+                (<div className="adSection">
+                    <img src={backIcon} alt="Back" id='backIcon' className='adBtn' onClick={handleBackBtn} />
+                    <div className="slider" ref={slider}>
+                        {seeAds.map((slide, index) => (
+                            <div
+                                className="slide"
+                                key={index}
+                                style={{
+                                    transform: `translateX(${-currentIndex * 100}%)`,
+                                }}
+                            >
+                                <a href={slide.body} target="_blank" rel="noopener noreferrer">
+                                    <img src={slide.coverImageURL} alt={`Advertisement ${index + 1}`} />
+                                    <p className='adImageBtn'>Click For More Details</p>
+                                </a>
 
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
-            <img src={nextIcon} alt="Next" id='nextIcon' className='adBtn' onClick={handleNextBtn} />
-        </div>
+                    <img src={nextIcon} alt="Next" id='nextIcon' className='adBtn' onClick={handleNextBtn} />
+                </div>)
+            }
+        </>
     );
 };
 
