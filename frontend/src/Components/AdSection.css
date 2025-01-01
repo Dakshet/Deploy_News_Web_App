@@ -25,7 +25,8 @@
 
 .slider {
     display: flex;
-    width: 950px;
+    /* width: 950px; */
+    width: 500px;
     /* height: 100%; */
     transition: transform 0.5s ease-in-out;
     /* background-color: blue; */
@@ -47,7 +48,7 @@
 }
 
 .slide a img {
-    width: 900px;
+    width: 430px;
     height: 550px;
     /* object-fit: cover; */
     border-radius: 10px;
@@ -75,18 +76,18 @@
 
 
 @media (max-width:940px) {
-    .slide a img {
+    /* .slide a img {
         width: 700px;
         height: 530px;
-    }
+    } */
 }
 
 
 @media (max-width:700px) {
-    .slide a img {
+    /* .slide a img {
         width: 600px;
         height: 500px;
-    }
+    } */
 }
 
 @media (max-width:600px) {
@@ -96,10 +97,10 @@
         position: relative;
     }
 
-    .slide a img {
+    /* .slide a img {
         width: 400px;
         height: 430px;
-    }
+    } */
 
     .adSection .adBtn {
         height: 30px;
