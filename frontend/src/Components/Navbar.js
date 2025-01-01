@@ -90,6 +90,9 @@ const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, show
                         <li onClick={handleClick} className={`${location.pathname === '/magazine' ? 'activeNav' : ''}`}>
                             <Link to="/magazine">Magazine</Link>
                         </li>
+                        <li onClick={handleClick} className={`${(userLoginRedux.role === "REPORTER" ? (location.pathname === '/advertisement' ? 'activeNav' : '') : "hideLogin")}`}>
+                            <Link to="/advertisement">Advertisement</Link>
+                        </li>
                         <li onClick={handleShowAddMenu} className={`${mobileMenu ? "hideAddBtn" : (isUserIsNotLogin ? "hideLogin" : (userLoginRedux.role === "REPORTER" ? (location.pathname === "/addnews" ? "activeNav" : "") : "hideLogin"))}`}>
                             <div className="dropDownBox">
                                 <p>Add</p>
@@ -99,14 +102,14 @@ const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, show
                         <li onClick={() => setShowSearch(!showSearch)} className='hideSearchBarIcon'>
                             <i className="ri-search-line"></i>
                         </li>
-                        <li onClick={handleClick} className={`hideField ${isUserIsNotLogin ? "hideLogin" : (location.pathname === '/addnews' ? 'activeNav' : '')}`}>
+                        <li onClick={handleClick} className={`hideField ${userLoginRedux.role === "REPORTER" ? (location.pathname === '/addnews' ? 'activeNav' : '') : "hideLogin"}`}>
                             <Link to="/addnews">Add News</Link>
                         </li>
-                        <li onClick={handleClick} className={`hideField ${isUserIsNotLogin ? "hideLogin" : (location.pathname === '/addmagazine' ? 'activeNav' : '')}`}>
+                        <li onClick={handleClick} className={`hideField ${userLoginRedux.role === "REPORTER" ? (location.pathname === '/addmagazine' ? 'activeNav' : '') : "hideLogin"}`}>
                             <Link to="/addmagazine">Add Magazine</Link>
                         </li>
-                        <li onClick={handleClick} className={`hideField ${isUserIsNotLogin ? "" : "hideLogin"}`}>
-                            <Link to="/login">Login</Link>
+                        <li onClick={handleClick} className={`hideField ${userLoginRedux.role === "REPORTER" ? (location.pathname === '/add/advertisement' ? 'activeNav' : '') : "hideLogin"}`}>
+                            <Link to="/add/advertisement">Add AD</Link>
                         </li>
                         <li className={`hideField ${isUserIsNotLogin ? "hideLogin" : ""}`} onClick={handleLogout}>
                             Logout
@@ -133,7 +136,7 @@ const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, show
                                 <a href="https://www.linkedin.com/in/industrial-times-7ab62431a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">
                                     <i className="ri-linkedin-box-line"></i>
                                 </a>
-                                <a href="https://www.facebook.com/61570010956901/posts/122105459990667031" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.facebook.com/profile.php?id=61571226682075" target="_blank" rel="noopener noreferrer">
                                     <i className="ri-facebook-box-line"></i>
                                 </a>
                                 <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">

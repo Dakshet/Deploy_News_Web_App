@@ -115,7 +115,7 @@
         position: absolute;
         bottom: 0px;
         left: 40%;
-        z-index: 100;
+        z-index: 99;
     }
 
     .adSection #nextIcon {
@@ -148,7 +148,7 @@
         position: absolute;
         bottom: 0px;
         left: 40%;
-        z-index: 100;
+        z-index: 99;
     }
 
     .adSection #nextIcon {

@@ -7,7 +7,7 @@ const newsSchema = new Schema({
     },
     title: {
         type: String,
-        required: true,
+        required: false,
     },
     body: {
         type: String,
@@ -15,7 +15,7 @@ const newsSchema = new Schema({
     },
     tag: {
         type: String,
-        enum: ["NEWS", "ARTICLE", "INTERVIEW", "EVENT", "MAGAZINE", "JOB"],
+        enum: ["NEWS", "ARTICLE", "INTERVIEW", "EVENT", "MAGAZINE", "JOB", "AD"],
         default: "NEWS",
     },
     coverImageURL: {

@@ -31,6 +31,8 @@ const NewsState = (props) => {
 
     // const [userLogin, setUserLogin] = useState({});
 
+    const [seeAds, setSeeAds] = useState([]);
+
 
 
 
@@ -123,24 +125,32 @@ const NewsState = (props) => {
                 const json = await response.json();
 
                 if (json.allNews) {
-                    setPageNews(json.allNews);
+                    if (pageName === "AD") {
+                        setSeeAds(json.allNews)
+                    }
+                    else {
+                        setPageNews(json.allNews);
+                    }
                 }
 
                 else {
                     console.log(json.Error);
                     setPageNews([]);
+                    setSeeAds([]);
                 }
             }
 
             else {
                 console.log(`Error fetching news: ${response.status} ${response.statusText}`)
                 setPageNews([]);
+                setSeeAds([]);
             }
 
         } catch (error) {
             // Catch any network or unexpected errors
             console.error("Error fetching the news:", error);
             setPageNews([]);
+            setSeeAds([]);
         }
     }
 
@@ -262,13 +272,19 @@ const NewsState = (props) => {
 
 
     //Delete News
-    const deleteNews = async (id, coverImageURL) => {
+    const deleteNews = async (id, coverImageURL, tag) => {
 
         // const newNote = pageNews.filter((news) => news._id !== id)
 
         // console.log(newNote);
 
         // setPageNews(newNote);
+
+        if (tag === "AD") {
+            const newAdArray = seeAds.filter((ads) => ads._id !== id);
+
+            setSeeAds(newAdArray);
+        }
 
         try {
 
@@ -550,7 +566,46 @@ const NewsState = (props) => {
 
 
 
-    return (<NewsContext.Provider value={{ news, fetchNews, pageNews, setPageNews, fetchPageSpecificNews, getNewsUsingId, specificNews, setSpecificNews, addNews, deleteNews, editNews, commentNews, fetchComment, addComment, searchNewsResult, setSearchNewsResult, fetchSearchNews, loginUserInfo, addMagazine, deleteMagazine, visitCounter }}>
+    //Add Magazine
+    const addAdvertisement = async (body, coverImageURL) => {
+
+        try {
+
+            const response = await fetch(`${host}/news/addadvertisement`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "auth_token": localStorage.getItem("inews")
+                },
+                body: JSON.stringify({ body, coverImageURL })
+            })
+
+            if (response.ok) {
+                const json = await response.json();
+
+                if (json.news) {
+                    //console.log(json.news)
+                    // setSeeAds.concat(json.news);
+                }
+
+                else {
+                    console.log(json.Error);
+                }
+            }
+
+            else {
+                console.log(`Error fetching news: ${response.status} ${response.statusText}`)
+            }
+
+        } catch (error) {
+            // Catch any network or unexpected errors
+            console.error("Error fetching the news:", error);
+        }
+    }
+
+
+
+    return (<NewsContext.Provider value={{ news, fetchNews, pageNews, setPageNews, fetchPageSpecificNews, getNewsUsingId, specificNews, setSpecificNews, addNews, deleteNews, editNews, commentNews, fetchComment, addComment, searchNewsResult, setSearchNewsResult, fetchSearchNews, loginUserInfo, addMagazine, deleteMagazine, visitCounter, addAdvertisement, seeAds }}>
         {props.children}
     </NewsContext.Provider>
     )

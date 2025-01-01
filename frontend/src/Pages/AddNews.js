@@ -3,6 +3,7 @@ import "./AddNews.css"
 import NewsContext from '../Context/News/NewsContext';
 import { useNavigate } from 'react-router-dom';
 import JoditEditor from 'jodit-react';
+import { useSelector } from 'react-redux';
 
 const AddNews = ({ showAlert, showProfile, showAddMenu }) => {
 
@@ -16,6 +17,7 @@ const AddNews = ({ showAlert, showProfile, showAddMenu }) => {
     const [description, setDesciption] = useState("");
     const [tag, setTag] = useState("");
     const [images, setImages] = useState("");
+    const userLoginRedux = useSelector((state) => state.counter.userLogin);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -132,77 +134,85 @@ const AddNews = ({ showAlert, showProfile, showAddMenu }) => {
 
 
     return (
-        <div className={`addNews ${showProfile ? "userMenu" : ""}${showAddMenu ? "showMenu" : ""}`}>
-            <div className="addNewsInner">
-                <h1>Add News</h1>
+        <>
+            {
+                userLoginRedux.role === "REPORTER" ?
 
-                <div className="addNewsForm">
-                    <form action="" onSubmit={handleSubmit}>
-                        <label htmlFor="image">Cover Image(JPEG/JPG/PNG)</label>
-                        <input type="file" name='image' id='image' required onChange={(e) => postImage(e.target.files[0])} />
-                        <label htmlFor="title">Title</label>
-                        <input type="text" name='title' id='title' required onChange={(e) => setTitle(e.target.value)} minLength={3} />
-                        <label htmlFor="desc">Description</label>
-                        {/* <textarea name="desc" id="desc" rows="10" required onChange={(e) => setDesciption(e.target.value)}></textarea> */}
+                    (<div className={`addNews ${showProfile ? "userMenu" : ""}${showAddMenu ? "showMenu" : ""}`}>
+                        <div className="addNewsInner">
+                            <h1>Add News</h1>
 
-                        <JoditEditor
-                            ref={editor}
-                            value={description}
-                            config={{
-                                readonly: false,
-                                className: "joditEditor",
-                                style: {
-                                    width: '100%',
-                                    height: '200px',
-                                    backgroundColor: "transparent",
-                                    border: '3px solid #011E29',
-                                },
-                                toolbarButtonSize: "middle",
-                                placeholder: "Start writing here...",
-                                buttons: [
-                                    'bold', 'italic', 'underline', '|',
-                                    'ul', 'ol', '|',
-                                    'link', {
-                                        name: "customImageUpload", // Custom button for image upload
-                                        iconURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrVLGzO55RQXipmjnUPh09YUtP-BW3ZTUeAA&s", // Optional custom icon
-                                        // iconURL: "https://img.icons8.com/ios/50/000000/upload.png", // Optional custom icon
-                                        exec: () => {
-                                            document.getElementById("image-upload-input").click(); // Trigger file input
-                                        },
-                                    },
-                                    '|',
-                                    'align', 'undo', 'redo',
-                                    'fontsize', 'paragraph', "brush", "preview", '|',
-                                ]
-                            }
-                            }
-                            // Only update state when leaving the editor to prevent re-renders on every keystroke
-                            onBlur={newContent => setDesciption(newContent)}
-                        />
+                            <div className="addNewsForm">
+                                <form action="" onSubmit={handleSubmit}>
+                                    <label htmlFor="image">Cover Image(JPEG/JPG/PNG)</label>
+                                    <input type="file" name='image' id='image' required onChange={(e) => postImage(e.target.files[0])} />
+                                    <label htmlFor="title">Title</label>
+                                    <input type="text" name='title' id='title' required onChange={(e) => setTitle(e.target.value)} minLength={3} />
+                                    <label htmlFor="desc">Description</label>
+                                    {/* <textarea name="desc" id="desc" rows="10" required onChange={(e) => setDesciption(e.target.value)}></textarea> */}
+
+                                    <JoditEditor
+                                        ref={editor}
+                                        value={description}
+                                        config={{
+                                            readonly: false,
+                                            className: "joditEditor",
+                                            style: {
+                                                width: '100%',
+                                                height: '200px',
+                                                backgroundColor: "transparent",
+                                                border: '3px solid #011E29',
+                                            },
+                                            toolbarButtonSize: "middle",
+                                            placeholder: "Start writing here...",
+                                            buttons: [
+                                                'bold', 'italic', 'underline', '|',
+                                                'ul', 'ol', '|',
+                                                'link', {
+                                                    name: "customImageUpload", // Custom button for image upload
+                                                    iconURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrVLGzO55RQXipmjnUPh09YUtP-BW3ZTUeAA&s", // Optional custom icon
+                                                    // iconURL: "https://img.icons8.com/ios/50/000000/upload.png", // Optional custom icon
+                                                    exec: () => {
+                                                        document.getElementById("image-upload-input").click(); // Trigger file input
+                                                    },
+                                                },
+                                                '|',
+                                                'align', 'undo', 'redo',
+                                                'fontsize', 'paragraph', "brush", "preview", '|',
+                                            ]
+                                        }
+                                        }
+                                        // Only update state when leaving the editor to prevent re-renders on every keystroke
+                                        onBlur={newContent => setDesciption(newContent)}
+                                    />
 
 
-                        <input
-                            type="file"
-                            id="image-upload-input"
-                            style={{ display: 'none' }}
-                            accept="image/*"
-                            onChange={handleImageUpload}
-                        />
+                                    <input
+                                        type="file"
+                                        id="image-upload-input"
+                                        style={{ display: 'none' }}
+                                        accept="image/*"
+                                        onChange={handleImageUpload}
+                                    />
 
-                        <label htmlFor="tag">Type: </label>
-                        <select name="tag" id="tag" required onChange={(e) => setTag(e.target.value)} >
-                            <option value="">Select Type</option>
-                            <option value="NEWS">News</option>
-                            <option value="ARTICLE">Article</option>
-                            <option value="INTERVIEW">Interview</option>
-                            <option value="EVENT">Event</option>
-                            <option value="JOB">Job</option>
-                        </select>
-                        <input className='submitBtn' disabled={images.length === 0 || description === ""} type="submit" value={images.length === 0 ? "Upload Image" : (description === "" ? "Enter Description" : "Post")} />
-                    </form>
-                </div>
-            </div>
-        </div>
+                                    <label htmlFor="tag">Type: </label>
+                                    <select name="tag" id="tag" required onChange={(e) => setTag(e.target.value)} >
+                                        <option value="">Select Type</option>
+                                        <option value="NEWS">News</option>
+                                        <option value="ARTICLE">Article</option>
+                                        <option value="INTERVIEW">Interview</option>
+                                        <option value="EVENT">Event</option>
+                                        <option value="JOB">Job</option>
+                                    </select>
+                                    <input className='submitBtn' disabled={images.length === 0 || description === ""} type="submit" value={images.length === 0 ? "Upload Image" : (description === "" ? "Enter Description" : "Post")} />
+                                </form>
+                            </div>
+                        </div>
+                    </div>) :
+                    (
+                        <h1 style={{ margin: "20px 0px", textAlign: "center" }}>You don't have access to add news</h1>
+                    )}
+        </>
     )
 }
 

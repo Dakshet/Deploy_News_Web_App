@@ -8,6 +8,7 @@ const DropDownAddMenu = ({ showAddMenu, setShowAddMenu }) => {
             <div className="ddAddMenu">
                 <Link to="/addnews"><p onClick={() => setShowAddMenu(false)}>Add News</p></Link>
                 <Link to="/addmagazine"><p onClick={() => setShowAddMenu(false)}>Add Magazine</p></Link>
+                <Link to="/add/advertisement"><p onClick={() => setShowAddMenu(false)}>Add AD</p></Link>
             </div>
         </div>
     )

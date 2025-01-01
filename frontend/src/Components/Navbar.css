@@ -23,7 +23,7 @@
 .navbar-center ul li {
     list-style: none;
     display: inline-block;
-    margin: 5px 30px 5px 30px;
+    margin: 5px 20px 5px 20px;
     font-weight: 550;
     font-size: 17px;
     position: relative;
@@ -211,13 +211,14 @@
         right: 0;
         bottom: 0;
         width: 200px;
-        height: 98vh;
+        height: 92.3vh;
         background-color: #011E29;
         /* background-color: blue; */
         z-index: -1;
         padding-top: 0px;
         animation: moveleftNavbar 0.5s forwards ease-out;
         opacity: 0;
+        overflow-y: scroll;
     }
 
     @keyframes moveleftNavbar {
@@ -307,12 +308,12 @@
     .navbar-center ul li .socialMediaIconx {
         display: block;
         /* background-color: red; */
-        margin-left: -60px;
+        margin-left: -70px;
         height: 20px;
     }
 
     .navbar-center ul li .socialMediaIconx i {
-        margin: 4px 4px;
+        margin: 2px 1px;
         background-color: #02384d;
         color: white;
         display: inline-block;

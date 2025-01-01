@@ -3,6 +3,7 @@ import "./AddNews.css"
 import NewsContext from '../Context/News/NewsContext';
 import "./AddMagazine.css"
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const AddMagazine = ({ showAlert, showProfile, showAddMenu }) => {
     const Upload_Preset = process.env.REACT_APP_UPLOAD_PRESET_IMAGE;
@@ -17,6 +18,7 @@ const AddMagazine = ({ showAlert, showProfile, showAddMenu }) => {
     const [body, setBody] = useState("");
     const [links, setLinks] = useState(false);
     const [pdfs, setPdfs] = useState(false);
+    const userLoginRedux = useSelector((state) => state.counter.userLogin);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -120,28 +122,38 @@ const AddMagazine = ({ showAlert, showProfile, showAddMenu }) => {
 
 
     return (
-        <div className={`addMagazine ${showProfile ? "userMenu" : ""}${showAddMenu ? "showMenu" : ""}`}>
-            <div className="addMagazineInner">
-                <h1>Add Magazine</h1>
+        <>
+            {
+                userLoginRedux.role === "REPORTER" ?
 
-                <div className="addMagazineForm">
-                    <form action="" onSubmit={handleSubmit}>
-                        <label htmlFor="image">Cover Image(JPEG/JPG/PNG)</label>
-                        <input type="file" name='image' id='image' required onChange={(e) => postImage(e.target.files[0])} />
-                        <label htmlFor="title">Upload Magazine</label>
-                        <div className="uploadButtons">
-                            <button className='uploadBtn' onClick={handleLinks}>Upload link</button>
-                            <button className='uploadBtn' onClick={handlePdfs}>Upload Pdf</button>
+                    <div className={`addMagazine ${showProfile ? "userMenu" : ""}${showAddMenu ? "showMenu" : ""}`}>
+                        <div className="addMagazineInner">
+                            <h1>Add Magazine</h1>
+
+                            <div className="addMagazineForm">
+                                <form action="" onSubmit={handleSubmit}>
+                                    <label htmlFor="image">Cover Image(JPEG/JPG/PNG)</label>
+                                    <input type="file" name='image' id='image' required onChange={(e) => postImage(e.target.files[0])} />
+                                    <label htmlFor="title">Upload Magazine</label>
+                                    <div className="uploadButtons">
+                                        <button className='uploadBtn' onClick={handleLinks}>Upload link</button>
+                                        <button className='uploadBtn' onClick={handlePdfs}>Upload Pdf</button>
+                                    </div>
+                                    {pdfs && <input type="file" accept='application/pdf' onChange={(e) => postPdf(e.target.files[0])} required />}
+                                    {links && <input type="text" name='body' id='body' onChange={(e) => setBody(e.target.value)} required />}
+                                    <label id='titleCss' htmlFor="title">Title</label>
+                                    <input type="text" name='title' id='title' required onChange={(e) => setTitle(e.target.value)} minLength={3} />
+                                    <input className='submitBtn' disabled={images.length === 0 || body.length === 0} type="submit" value={images.length === 0 ? "Upload Image" : body.length === 0 ? "Upload PDF" : "POST"} />
+                                </form>
+                            </div>
                         </div>
-                        {pdfs && <input type="file" accept='application/pdf' onChange={(e) => postPdf(e.target.files[0])} required />}
-                        {links && <input type="text" name='body' id='body' onChange={(e) => setBody(e.target.value)} required />}
-                        <label id='titleCss' htmlFor="title">Title</label>
-                        <input type="text" name='title' id='title' required onChange={(e) => setTitle(e.target.value)} minLength={3} />
-                        <input className='submitBtn' disabled={images.length === 0 || body.length === 0} type="submit" value={images.length === 0 ? "Upload Image" : body.length === 0 ? "Upload PDF" : "POST"} />
-                    </form>
-                </div>
-            </div>
-        </div>
+                    </div>
+                    :
+                    (
+                        <h1 style={{ margin: "20px 0px", textAlign: "center" }}>You don't have access to add Magazine</h1>
+                    )
+            }
+        </>
     )
 }
 

@@ -419,6 +419,44 @@ async function countVisitNumber(req, res) {
     }
 }
 
+
+
+
+// Add AD
+async function addAD(req, res) {
+    try {
+        //Destructure the request
+        const { body, coverImageURL } = req.body;
+
+        //Validate the fields
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            success = false;
+            return res.status(400).json({ success, Error: errors.array()[0].msg })
+        }
+
+        //Add data in DB
+        let news = await News.create({
+            body,
+            tag: "AD",
+            createdUser: req.user.id,
+            coverImageURL,
+        })
+
+        news = await news.save();
+
+        //Final
+        success = true;
+        return res.status(201).json({ success, news })
+
+    } catch (error) {
+        console.log(error.message);
+        success = false;
+        return res.status(500).json({ success, Error: "Internal Server Error Occured!" })
+    }
+}
+
+
 module.exports = {
     fetchAllNewsForHomePage,
     addNews,
@@ -429,5 +467,6 @@ module.exports = {
     fetchSearchNews,
     addMagazine,
     deleteMagazine,
-    countVisitNumber
+    countVisitNumber,
+    addAD
 }

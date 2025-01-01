@@ -6,6 +6,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  useLocation,
 } from "react-router-dom"
 import NewsState from './Context/News/NewsState';
 import { useState } from 'react';
@@ -25,6 +26,8 @@ import SearchNews from './Pages/SearchNews';
 import Alert from './Components/Alert';
 import AddMagazine from './Pages/AddMagazine';
 import AdSection from './Components/AdSection';
+import AddAD from './Pages/AddAD';
+import ADPage from './Pages/ADPage';
 
 function App() {
 
@@ -54,7 +57,7 @@ function App() {
         <Router>
           <Logo />
           <Navbar showAddMenu={showAddMenu} setShowAddMenu={setShowAddMenu} showAlert={showAlert} showProfile={showProfile} setShowProfile={setShowProfile} showSearch={showSearch} setShowSearch={setShowSearch} />
-          <AdSection />
+          <ShowAds />
           <ScrollToTop />
           <Routes>
 
@@ -71,6 +74,8 @@ function App() {
             <Route exact path='/login' element={<Login showAlert={showAlert} />} />
             <Route exact path='/signup' element={<Signup showAlert={showAlert} />} />
             <Route exact path='/search/news' element={<SearchNews showProfile={showProfile} showAddMenu={showAddMenu} />} />
+            <Route exact path='/add/advertisement' element={<AddAD showAlert={showAlert} showProfile={showProfile} showAddMenu={showAddMenu} />} />
+            <Route exact path='/advertisement' element={<ADPage showAlert={showAlert} showProfile={showProfile} showAddMenu={showAddMenu} />} />
 
             <Route path="*" element={<Home showProfile={showProfile} showAddMenu={showAddMenu} />} />
           </Routes>
@@ -80,6 +85,14 @@ function App() {
       </div>
     </NewsState>
   );
+}
+
+
+function ShowAds() {
+  const location = useLocation();
+  const hideOnRoutes = ['/', '/news', '/article', '/interview', '/event', '/job', '/magazine', '/search/news',]; // Routes where MonthTimer should be display
+
+  return hideOnRoutes.includes(location.pathname) && <AdSection />;
 }
 
 export default App;

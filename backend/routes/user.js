@@ -3,6 +3,7 @@ const { signupUser, loginUser, loginUserDetails } = require("../controllers/user
 
 const { body } = require("express-validator");
 const { fetchUser } = require("../middlewares/fetchUser");
+const { addAD } = require("../controllers/news");
 
 const router = express.Router();
 
@@ -16,6 +17,10 @@ router.post("/signup", [
 router.post("/login", loginUser)
 
 router.get("/loginuserdetails", fetchUser, loginUserDetails)
+
+
+// Routes for the AD
+router.post("/addadvertisement", fetchUser, addAD)
 
 
 module.exports = router;
