@@ -65,7 +65,7 @@ const AdSection = () => {
 
     return (
         <>
-            {seeAds.length === 0 ? "" :
+            {seeAds.length === 0 ? " " :
                 (<div className="adSection">
                     <img src={backIcon} alt="Back" id='backIcon' className='adBtn' onClick={handleBackBtn} />
                     <div className="slider" ref={slider}>
