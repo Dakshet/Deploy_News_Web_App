@@ -1,5 +1,12 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import './AdSection.css';
+import ad10 from '../Images/ad10.jpg';
+import ad12 from '../Images/ad12.jpg';
+import ad13 from '../Images/ad13.jpg';
+import ad4 from '../Images/ad4.jpg';
+import ad5 from '../Images/ad5.jpg';
+import ad8 from '../Images/ad8.jpg';
+import ad11 from '../Images/ad11.jpg';
 import backIcon from '../Images/back-icon.png';
 import nextIcon from '../Images/next-icon.png';
 import NewsContext from '../Context/News/NewsContext';

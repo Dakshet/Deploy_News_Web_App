@@ -29,4 +29,9 @@ router.delete("/deletemagazine", fetchUser, deleteMagazine)
 
 router.put("/updatecount", countVisitNumber)
 
+
+
+// Routes for the AD
+router.post("/addadvertisement", fetchUser, addAD)
+
 module.exports = router;
