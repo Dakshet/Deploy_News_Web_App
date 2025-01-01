@@ -111,6 +111,9 @@ const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, show
                         <li onClick={handleClick} className={`hideField ${userLoginRedux.role === "REPORTER" ? (location.pathname === '/add/advertisement' ? 'activeNav' : '') : "hideLogin"}`}>
                             <Link to="/add/advertisement">Add AD</Link>
                         </li>
+                        <li onClick={handleClick} className={`hideField ${isUserIsNotLogin ? "" : "hideLogin"}`}>
+                            <Link to="/login">Login</Link>
+                        </li>
                         <li className={`hideField ${isUserIsNotLogin ? "hideLogin" : ""}`} onClick={handleLogout}>
                             Logout
                         </li>
