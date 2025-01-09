@@ -15,7 +15,6 @@ const AdminPage = () => {
     }, [])
 
 
-    const isUserIsNotLogin = Object.keys(userLoginRedux).length === 0;
     return (
         <>
             <GoToPreviousePage />
@@ -26,17 +25,14 @@ const AdminPage = () => {
                             <img src={userLoginRedux.profileImageURL} alt="" />
                             <h1>{userLoginRedux.name}</h1>
                             <ul className='adminPageInnerList'>
-                                <li onClick={handleClick} className={`hideField ${userLoginRedux.role === "REPORTER" ? (location.pathname === '/addnews' ? 'activeNav' : '') : "hideLogin"}`}>
+                                <li onClick={handleClick}>
                                     <Link to="/addnews">Add News</Link>
                                 </li>
-                                <li onClick={handleClick} className={`hideField ${userLoginRedux.role === "REPORTER" ? (location.pathname === '/addmagazine' ? 'activeNav' : '') : "hideLogin"}`}>
+                                <li onClick={handleClick} >
                                     <Link to="/addmagazine">Add Magazine</Link>
                                 </li>
-                                <li onClick={handleClick} className={`hideField ${userLoginRedux.role === "REPORTER" ? (location.pathname === '/add/advertisement' ? 'activeNav' : '') : "hideLogin"}`}>
+                                <li onClick={handleClick}>
                                     <Link to="/add/advertisement">Add AD</Link>
-                                </li>
-                                <li onClick={handleClick} className={`hideField ${isUserIsNotLogin ? "" : "hideLogin"}`}>
-                                    <Link to="/login">Login</Link>
                                 </li>
                             </ul>
                         </div>
