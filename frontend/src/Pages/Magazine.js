@@ -5,7 +5,7 @@ import MagazineItem from '../Components/MagazineItem';
 import issuuImage from '../Images/issuuImage1.png'
 import { Link } from 'react-router-dom';
 
-const Magazine = ({ showProfile, showAddMenu, showAlert }) => {
+const Magazine = ({ showAddMenu, showAlert }) => {
     const { pageNews, fetchPageSpecificNews } = useContext(NewsContext);
 
 
@@ -26,7 +26,7 @@ const Magazine = ({ showProfile, showAddMenu, showAlert }) => {
 
 
     return (
-        <div className={`magazine ${showProfile ? "userMenu" : ""} ${showAddMenu ? "showMenu" : ""}`}>
+        <div className={`magazine  ${showAddMenu ? "showMenu" : ""}`}>
             <div className="magazineContainer">
                 <div className="magazineHeader">
                     <h3>Magazine</h3>

@@ -3,7 +3,7 @@ import "./Interview.css"
 import NewsContext from '../Context/News/NewsContext';
 import InterviewItem from '../Components/InterviewItem';
 
-const Interview = ({ showProfile, showAddMenu }) => {
+const Interview = ({ showAddMenu }) => {
 
     const { pageNews, fetchPageSpecificNews } = useContext(NewsContext);
 
@@ -25,7 +25,7 @@ const Interview = ({ showProfile, showAddMenu }) => {
 
 
     return (
-        <div className={`interview ${showProfile ? "userMenu" : ""}${showAddMenu ? "showMenu" : ""}`}>
+        <div className={`interview ${showAddMenu ? "showMenu" : ""}`}>
             <div className="interviewContainer">
                 <h3>Interview</h3>
                 <hr />

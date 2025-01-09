@@ -7,10 +7,10 @@ import NewsContext from '../Context/News/NewsContext'
 import { useDispatch, useSelector } from 'react-redux'
 import { storeUserLogin } from '../redux/counter/counterSlice'
 import UserProfile from './UserProfile'
-import DropDownAddMenu from './DropDownAddMenu'
+// import DropDownAddMenu from './DropDownAddMenu'
 
 
-const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, showSearch, setShowSearch, showAlert }) => {
+const Navbar = ({ setShowAddMenu, showProfile, setShowProfile, showSearch, setShowSearch, showAlert }) => {
 
     const navigate = useNavigate();
     const { setSearchNewsResult, setSpecificNews } = useContext(NewsContext);
@@ -18,8 +18,7 @@ const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, show
     const userLoginRedux = useSelector((state) => state.counter.userLogin);
     const dispatch = useDispatch();
     const location = useLocation();
-    const articleId = location.pathname.split("/")[3] || ""; // This will safely handle paths without a third segment
-
+    const articleId = location.pathname.split("/")[2] || ""; // This will safely handle paths without a third segment
 
     const toggleMenu = () => {
         setMobileMenu(!mobileMenu)
@@ -46,10 +45,10 @@ const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, show
         setShowAddMenu(false);
     }
 
-    const handleShowAddMenu = () => {
-        setShowAddMenu(!showAddMenu)
-        setShowProfile(false);
-    }
+    // const handleShowAddMenu = () => {
+    //     setShowAddMenu(!showAddMenu)
+    //     setShowProfile(false);
+    // }
 
     const isUserIsNotLogin = Object.keys(userLoginRedux).length === 0;
 
@@ -90,19 +89,27 @@ const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, show
                         <li onClick={handleClick} className={`${location.pathname === '/magazine' ? 'activeNav' : ''}`}>
                             <Link to="/magazine">Magazine</Link>
                         </li>
-                        <li onClick={handleClick} className={`${(userLoginRedux.role === "REPORTER" ? (location.pathname === '/advertisement' ? 'activeNav' : '') : "hideLogin")}`}>
-                            <Link to="/advertisement">Advertisement</Link>
-                        </li>
-                        <li onClick={handleShowAddMenu} className={`${mobileMenu ? "hideAddBtn" : (isUserIsNotLogin ? "hideLogin" : (userLoginRedux.role === "REPORTER" ? (location.pathname === "/addnews" ? "activeNav" : "") : "hideLogin"))}`}>
-                            <div className="dropDownBox">
-                                <p>Add</p>
-                                <i id='downDownBoxIcon' className="ri-arrow-down-s-line"></i>
-                            </div>
-                        </li>
+                        {
+                            userLoginRedux.role === "REPORTER" && (
+                                <>
+                                    <li onClick={handleClick} className={`${location.pathname === '/advertisement' ? 'activeNav' : ''}`}>
+                                        <Link to="/advertisement">Advertisement</Link>
+                                    </li>
+                                    <li onClick={handleClick} className={`${location.pathname === '/adminpage' ? 'activeNav' : ''}`}>
+                                        <Link to="/adminpage">Admin</Link>
+                                    </li>
+                                </>
+                            )
+                        }
+
                         <li onClick={() => setShowSearch(!showSearch)} className='hideSearchBarIcon'>
                             <i className="ri-search-line"></i>
                         </li>
-                        <li onClick={handleClick} className={`hideField ${userLoginRedux.role === "REPORTER" ? (location.pathname === '/addnews' ? 'activeNav' : '') : "hideLogin"}`}>
+                        {/* <li onClick={handleClick} className={`hideField ${isUserIsNotLogin ? "hideLogin" : (userLoginRedux.role === "REPORTER" ? (location.pathname === '/addnews' ? 'activeNav' : '') : "hideLogin"):""))}`}/> */}
+                        {/* <li onClick={handleClick} className={`${mobileMenu ? "hideAddBtn" : (isUserIsNotLogin ? "hideLogin" : (userLoginRedux.role === "REPORTER" ? (location.pathname === "/addnews" ? "activeNav" : "") : "hideLogin"))}`}> */}
+
+
+                        {/* <li onClick={handleClick} className={`hideField ${userLoginRedux.role === "REPORTER" ? (location.pathname === '/addnews' ? 'activeNav' : '') : "hideLogin"}`}>
                             <Link to="/addnews">Add News</Link>
                         </li>
                         <li onClick={handleClick} className={`hideField ${userLoginRedux.role === "REPORTER" ? (location.pathname === '/addmagazine' ? 'activeNav' : '') : "hideLogin"}`}>
@@ -110,7 +117,7 @@ const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, show
                         </li>
                         <li onClick={handleClick} className={`hideField ${userLoginRedux.role === "REPORTER" ? (location.pathname === '/add/advertisement' ? 'activeNav' : '') : "hideLogin"}`}>
                             <Link to="/add/advertisement">Add AD</Link>
-                        </li>
+                        </li> */}
                         <li onClick={handleClick} className={`hideField ${isUserIsNotLogin ? "" : "hideLogin"}`}>
                             <Link to="/login">Login</Link>
                         </li>
@@ -145,22 +152,34 @@ const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, show
                                 <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
                                     <i className="ri-instagram-line"></i>
                                 </a>
+
                             </div>
                         </li>
                     </ul>
                 </div>
                 <div className="navbar-right">
                     <ul>
-                        <img className={`${isUserIsNotLogin ? "hideLogin" : ""}`} onClick={handleUserProfile} src={userLoginRedux.profileImageURL} alt="" />
-                        <li className={`${isUserIsNotLogin ? "hideLogin" : ""}`} onClick={handleLogout}>
-                            Logout
-                        </li>
-                        <li className={`${isUserIsNotLogin ? (location.pathname === "/signup" ? "hideLogin" : "") : "hideLogin"}`}>
-                            <Link to="/signup">Signup</Link>
-                        </li>
-                        <li className={`${isUserIsNotLogin ? (location.pathname === "/login" ? "hideLogin" : "") : "hideLogin"}`}>
-                            <Link to="/login">Login</Link>
-                        </li>
+                        {
+                            isUserIsNotLogin ? (
+                                <>
+                                    <li className={`${location.pathname === "/signup" ? "hideLogin" : ""}`}>
+                                        <Link to="/signup">Signup</Link>
+                                    </li>
+                                    <li className={`${location.pathname === "/login" ? "hideLogin" : ""}`}>
+                                        <Link to="/login">Login</Link>
+                                    </li>
+                                </>
+                            ) : (
+                                <>
+                                    <img onClick={handleUserProfile} src={userLoginRedux.profileImageURL} alt="" />
+                                    <li onClick={handleLogout}>
+                                        Logout
+                                    </li>
+                                </>
+                            )
+                        }
+
+
                     </ul>
                 </div>
 
@@ -169,7 +188,7 @@ const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, show
             </div >
             <SearchBar showSearch={showSearch} setShowSearch={setShowSearch} />
             <UserProfile showProfile={showProfile} />
-            <DropDownAddMenu showAddMenu={showAddMenu} setShowAddMenu={setShowAddMenu} />
+            {/* <DropDownAddMenu showAddMenu={showAddMenu} setShowAddMenu={setShowAddMenu} /> */}
         </>
     )
 }

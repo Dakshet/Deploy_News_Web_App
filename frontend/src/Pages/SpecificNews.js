@@ -5,8 +5,9 @@ import { useLocation, useNavigate } from "react-router-dom"
 import UpdateNews from '../Components/UpdateNews'
 import Comments from '../Components/Comments'
 import SpecificNewsInner from '../Components/SpecificNewsInner'
+import GoToPreviousePage from '../Components/GoToPreviousePage'
 
-const SpecificNews = ({ showAddMenu, showAlert, showProfile }) => {
+const SpecificNews = ({ showAddMenu, showAlert }) => {
 
     const shareUrl = window.location.href;
     // const shareUrl = "https://www.youtube.com";
@@ -76,6 +77,8 @@ const SpecificNews = ({ showAddMenu, showAlert, showProfile }) => {
 
             {/* {console.log(specificNews.coverImageURL)} */}
 
+
+            <GoToPreviousePage />
             <UpdateNews showAlert={showAlert} currentNews={currentNews} updateModal={updateModal} setUpdateModal={setUpdateModal} />
 
             <SpecificNewsInner
@@ -84,7 +87,6 @@ const SpecificNews = ({ showAddMenu, showAlert, showProfile }) => {
                 body={specificNews.body}
                 image={specificNews.coverImageURL}
                 showAddMenu={showAddMenu}
-                showProfile={showProfile}
                 handleDeleteNews={handleDeleteNews}
                 handleUpdateNews={handleUpdateNews}
                 shareModal={shareModal}

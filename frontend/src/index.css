@@ -109,6 +109,45 @@ a {
 
 
 
+.goToPreviousePage {
+  position: absolute;
+  /* top: 50px; */
+  top: 260px;
+  left: 0px;
+  /* background-color: red; */
+  width: 100%;
+  padding: 20px 4%;
+}
+
+.goToPreviousePage i {
+  /* background-color: #011E29; */
+  padding: 10px;
+  color: black;
+  border-radius: 50%;
+}
+
+
+
+/* ----------------------------------------- User menu */
+
+
+@media (max-width:650px) {
+
+  .goToPreviousePage {
+    top: 200px;
+  }
+}
+
+
+@media (max-width:570px) {
+
+  .goToPreviousePage {
+    top: 145px;
+    left: -10px;
+  }
+}
+
+
 
 
 /* ----------------------------------------- User menu */

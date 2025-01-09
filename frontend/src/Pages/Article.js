@@ -3,7 +3,7 @@ import "./Article.css"
 import NewsContext from '../Context/News/NewsContext';
 import ArticleItem from '../Components/ArticleItem';
 
-const Article = ({ showProfile, showAddMenu }) => {
+const Article = ({ showAddMenu }) => {
 
     const { pageNews, fetchPageSpecificNews } = useContext(NewsContext);
 
@@ -24,7 +24,7 @@ const Article = ({ showProfile, showAddMenu }) => {
     }
 
     return (
-        <div className={`article ${showProfile ? "userMenu" : ""} ${showAddMenu ? "showMenu" : ""}`}>
+        <div className={`article  ${showAddMenu ? "showMenu" : ""}`}>
             <div className="articleContainer">
                 <h3>Article</h3>
                 <hr />

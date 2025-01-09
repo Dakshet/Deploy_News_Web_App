@@ -3,7 +3,7 @@ import "./Event.css"
 import NewsContext from '../Context/News/NewsContext';
 import EventItem from '../Components/EventItem';
 
-const Event = ({ showProfile, showAddMenu }) => {
+const Event = ({ showAddMenu }) => {
 
     const { pageNews, fetchPageSpecificNews } = useContext(NewsContext);
 
@@ -25,7 +25,7 @@ const Event = ({ showProfile, showAddMenu }) => {
 
 
     return (
-        <div className={`event ${showProfile ? "userMenu" : ""} ${showAddMenu ? "showMenu" : ""}`}>
+        <div className={`event ${showAddMenu ? "showMenu" : ""}`}>
             <div className="eventContainer">
                 <h3>Job</h3>
                 <hr />

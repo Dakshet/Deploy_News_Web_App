@@ -10,6 +10,12 @@
     /* background-color: red; */
 }
 
+
+.showProfileSectionForAd {
+    margin-top: -243px;
+    /* background-color: red; */
+}
+
 .adSection .adBtn {
     background-color: #011E29;
     height: 40px;
@@ -72,6 +78,11 @@
     align-items: center;
     justify-content: center;
     word-spacing: 4px;
+}
+
+
+.hideAd {
+    display: none;
 }
 
 

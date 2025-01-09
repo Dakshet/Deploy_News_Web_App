@@ -4,6 +4,7 @@ import NewsContext from '../Context/News/NewsContext';
 import "./AddMagazine.css"
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import GoToPreviousePage from '../Components/GoToPreviousePage';
 
 const AddMagazine = ({ showAlert, showProfile, showAddMenu }) => {
     const Upload_Preset = process.env.REACT_APP_UPLOAD_PRESET_IMAGE;
@@ -123,6 +124,7 @@ const AddMagazine = ({ showAlert, showProfile, showAddMenu }) => {
 
     return (
         <>
+            <GoToPreviousePage />
             {
                 userLoginRedux.role === "REPORTER" ?
 

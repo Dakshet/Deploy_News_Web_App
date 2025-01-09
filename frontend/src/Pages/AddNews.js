@@ -4,6 +4,7 @@ import NewsContext from '../Context/News/NewsContext';
 import { useNavigate } from 'react-router-dom';
 import JoditEditor from 'jodit-react';
 import { useSelector } from 'react-redux';
+import GoToPreviousePage from '../Components/GoToPreviousePage';
 
 const AddNews = ({ showAlert, showProfile, showAddMenu }) => {
 
@@ -135,6 +136,7 @@ const AddNews = ({ showAlert, showProfile, showAddMenu }) => {
 
     return (
         <>
+            <GoToPreviousePage />
             {
                 userLoginRedux.role === "REPORTER" ?
 

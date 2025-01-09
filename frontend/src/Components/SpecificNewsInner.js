@@ -14,7 +14,7 @@ import {
 } from "react-share";
 import { useSelector } from 'react-redux';
 
-const SpecificNewsInner = ({ title, shareUrl, body, image, showAddMenu, showProfile, handleDeleteNews, handleUpdateNews, shareModal, setShareModal, specificNews }) => {
+const SpecificNewsInner = ({ title, shareUrl, body, image, showAddMenu, handleDeleteNews, handleUpdateNews, shareModal, setShareModal, specificNews }) => {
 
     const userLoginRedux = useSelector((state) => state.counter.userLogin);
     const isUserIsNotLogin = Object.keys(userLoginRedux).length === 0;
@@ -64,7 +64,7 @@ const SpecificNewsInner = ({ title, shareUrl, body, image, showAddMenu, showProf
                 <meta property="og:image" content={image} />
             </Helmet>
 
-            <div className={`specificNews ${showProfile ? "userMenu" : ""}${showAddMenu ? "showMenu" : ""}`}>
+            <div className={`specificNews ${showAddMenu ? "showMenu" : ""}`}>
                 <div className="specificNewsInner">
                     <h1>{title}</h1>
                     <div className="specificTimeZone">

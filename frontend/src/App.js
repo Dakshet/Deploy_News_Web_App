@@ -28,6 +28,7 @@ import AddMagazine from './Pages/AddMagazine';
 import AdSection from './Components/AdSection';
 import AddAD from './Pages/AddAD';
 import ADPage from './Pages/ADPage';
+import AdminPage from './Pages/AdminPage';
 
 function App() {
 
@@ -50,25 +51,25 @@ function App() {
     }, 2100);
   }
 
-
   return (
     <NewsState>
       <div>
         <Router>
           <Logo />
           <Navbar showAddMenu={showAddMenu} setShowAddMenu={setShowAddMenu} showAlert={showAlert} showProfile={showProfile} setShowProfile={setShowProfile} showSearch={showSearch} setShowSearch={setShowSearch} />
-          <ShowAds />
+          {/* <ShowAds showProfile={showProfile} /> */}
+          <AdSection showProfile={showProfile} />
           <ScrollToTop />
           <Routes>
 
-            <Route index exact path='/' element={<Home showProfile={showProfile} showAddMenu={showAddMenu} />} />
-            <Route exact path='/news' element={<News showProfile={showProfile} showAddMenu={showAddMenu} />} />
-            <Route exact path='/article' element={<Article showProfile={showProfile} showAddMenu={showAddMenu} />} />
-            <Route exact path='/interview' element={<Interview showProfile={showProfile} showAddMenu={showAddMenu} />} />
-            <Route exact path='/event' element={<Event showProfile={showProfile} showAddMenu={showAddMenu} />} />
-            <Route exact path='/job' element={<Job showProfile={showProfile} showAddMenu={showAddMenu} />} />
-            <Route exact path='/magazine' element={<Magazine showProfile={showProfile} showAddMenu={showAddMenu} showAlert={showAlert} />} />
-            <Route exact path='/:tag/:id' element={<SpecificNews showProfile={showProfile} showAddMenu={showAddMenu} showAlert={showAlert} />} />
+            <Route index exact path='/' element={<Home showAddMenu={showAddMenu} />} />
+            <Route exact path='/news' element={<News showAddMenu={showAddMenu} />} />
+            <Route exact path='/article' element={<Article showAddMenu={showAddMenu} />} />
+            <Route exact path='/interview' element={<Interview showAddMenu={showAddMenu} />} />
+            <Route exact path='/event' element={<Event showAddMenu={showAddMenu} />} />
+            <Route exact path='/job' element={<Job showAddMenu={showAddMenu} />} />
+            <Route exact path='/magazine' element={<Magazine showAddMenu={showAddMenu} showAlert={showAlert} />} />
+            <Route exact path='/:tag/:id' element={<SpecificNews showAddMenu={showAddMenu} showAlert={showAlert} />} />
             {/* <Route exact path='/snews/:tag/:id' element={<SpecificNews showProfile={showProfile} showAddMenu={showAddMenu} showAlert={showAlert} />} /> */}
             <Route exact path='/addnews' element={<AddNews showProfile={showProfile} showAddMenu={showAddMenu} showAlert={showAlert} />} />
             <Route exact path='/addmagazine' element={<AddMagazine showProfile={showProfile} showAddMenu={showAddMenu} showAlert={showAlert} />} />
@@ -77,6 +78,7 @@ function App() {
             <Route exact path='/search/news' element={<SearchNews showProfile={showProfile} showAddMenu={showAddMenu} />} />
             <Route exact path='/add/advertisement' element={<AddAD showAlert={showAlert} showProfile={showProfile} showAddMenu={showAddMenu} />} />
             <Route exact path='/advertisement' element={<ADPage showAlert={showAlert} showProfile={showProfile} showAddMenu={showAddMenu} />} />
+            <Route exact path='/adminpage' element={<AdminPage showAlert={showAlert} showProfile={showProfile} showAddMenu={showAddMenu} />} />
 
             <Route path="*" element={<Home showProfile={showProfile} showAddMenu={showAddMenu} />} />
           </Routes>
@@ -88,12 +90,11 @@ function App() {
   );
 }
 
+// function ShowAds() {
+//   const location = useLocation();
+//   const hideOnRoutes = ['/', '/news', '/article', '/interview', '/event', '/job', '/magazine', '/search/news',]; // Routes where AD should be display
 
-function ShowAds() {
-  const location = useLocation();
-  const hideOnRoutes = ['/', '/news', '/article', '/interview', '/event', '/job', '/magazine', '/search/news',]; // Routes where MonthTimer should be display
-
-  return hideOnRoutes.includes(location.pathname) && <AdSection />;
-}
+//   return hideOnRoutes.includes(location.pathname) && <AdSection />;
+// }
 
 export default App;

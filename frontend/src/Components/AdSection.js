@@ -3,12 +3,17 @@ import './AdSection.css';
 import backIcon from '../Images/back-icon.png';
 import nextIcon from '../Images/next-icon.png';
 import NewsContext from '../Context/News/NewsContext';
+import { useLocation } from 'react-router-dom';
 
-const AdSection = () => {
+const AdSection = ({ showProfile }) => {
     const slider = useRef();
     // const [slides, setSlides] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const { seeAds, fetchPageSpecificNews } = useContext(NewsContext);
+    const hideOnRoutes = ['/', '/news', '/article', '/interview', '/event', '/job', '/magazine']
+    const location = useLocation();
+    const showAds = hideOnRoutes.includes(location.pathname); // Determine ad visibility based on the route
+
 
     const handleNextBtn = useCallback(() => {
         if (seeAds.length === 0) return;
@@ -19,6 +24,7 @@ const AdSection = () => {
         if (seeAds.length === 0) return;
         setCurrentIndex((prevIndex) => (prevIndex - 1 + seeAds.length) % seeAds.length);
     }, [seeAds])
+
 
     useEffect(() => {
         fetchPageSpecificNews("AD");
@@ -65,28 +71,31 @@ const AdSection = () => {
 
     return (
         <>
-            {seeAds.length === 0 ? " " :
-                (<div className="adSection">
-                    <img src={backIcon} alt="Back" id='backIcon' className='adBtn' onClick={handleBackBtn} />
-                    <div className="slider" ref={slider}>
-                        {seeAds.map((slide, index) => (
-                            <div
-                                className="slide"
-                                key={index}
-                                style={{
-                                    transform: `translateX(${-currentIndex * 100}%)`,
-                                }}
-                            >
-                                <a href={slide.body} target="_blank" rel="noopener noreferrer">
-                                    <img src={slide.coverImageURL} alt={`Advertisement ${index + 1}`} />
-                                    <p className='adImageBtn'>Click For More Details</p>
-                                </a>
+            {seeAds.length > 0 && showAds &&
+                (
+                    <div className={`${showProfile ? "showProfileSectionForAd" : ""}`}>
+                        <div className="adSection">
+                            <img src={backIcon} alt="Back" id='backIcon' className='adBtn' onClick={handleBackBtn} />
+                            <div className="slider" ref={slider}>
+                                {seeAds.map((slide, index) => (
+                                    <div
+                                        className="slide"
+                                        key={index}
+                                        style={{
+                                            transform: `translateX(${-currentIndex * 100}%)`,
+                                        }}
+                                    >
+                                        <a href={slide.body} target="_blank" rel="noopener noreferrer">
+                                            <img src={slide.coverImageURL} alt={`Advertisement ${index + 1}`} />
+                                            <p className='adImageBtn'>Click For More Details</p>
+                                        </a>
 
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
-                    <img src={nextIcon} alt="Next" id='nextIcon' className='adBtn' onClick={handleNextBtn} />
-                </div>)
+                            <img src={nextIcon} alt="Next" id='nextIcon' className='adBtn' onClick={handleNextBtn} />
+                        </div>
+                    </div >)
             }
         </>
     );
