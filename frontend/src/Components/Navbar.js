@@ -72,19 +72,19 @@ const Navbar = ({ showAddMenu, setShowAddMenu, showProfile, setShowProfile, show
                         <li onClick={handleClick} className={`${location.pathname === '/' ? 'activeNav' : ''}`}>
                             <Link to="/">Home</Link>
                         </li>
-                        <li onClick={handleClick} className={`${location.pathname === `/snews/news/${articleId}` ? 'activeNav' : location.pathname === '/news' ? 'activeNav' : ''}`}>
+                        <li onClick={handleClick} className={`${location.pathname === `/news/${articleId}` ? 'activeNav' : location.pathname === '/news' ? 'activeNav' : ''}`}>
                             <Link to="/news">News</Link>
                         </li>
-                        <li onClick={handleClick} className={`${location.pathname === `/snews/article/${articleId}` ? 'activeNav' : location.pathname === '/article' ? 'activeNav' : ''}`}>
+                        <li onClick={handleClick} className={`${location.pathname === `/article/${articleId}` ? 'activeNav' : location.pathname === '/article' ? 'activeNav' : ''}`}>
                             <Link to="/article">Article</Link>
                         </li>
-                        <li onClick={handleClick} className={`${location.pathname === `/snews/interview/${articleId}` ? 'activeNav' : location.pathname === '/interview' ? 'activeNav' : ''}`}>
+                        <li onClick={handleClick} className={`${location.pathname === `/interview/${articleId}` ? 'activeNav' : location.pathname === '/interview' ? 'activeNav' : ''}`}>
                             <Link to="/interview">Interview</Link>
                         </li>
-                        <li onClick={handleClick} className={`${location.pathname === `/snews/event/${articleId}` ? 'activeNav' : location.pathname === '/event' ? 'activeNav' : ''}`}>
+                        <li onClick={handleClick} className={`${location.pathname === `/event/${articleId}` ? 'activeNav' : location.pathname === '/event' ? 'activeNav' : ''}`}>
                             <Link to="/event">Event</Link>
                         </li>
-                        <li onClick={handleClick} className={`${location.pathname === `/snews/job/${articleId}` ? 'activeNav' : location.pathname === '/job' ? 'activeNav' : ''}`}>
+                        <li onClick={handleClick} className={`${location.pathname === `/job/${articleId}` ? 'activeNav' : location.pathname === '/job' ? 'activeNav' : ''}`}>
                             <Link to="/job">Jobs</Link>
                         </li>
                         <li onClick={handleClick} className={`${location.pathname === '/magazine' ? 'activeNav' : ''}`}>

@@ -68,7 +68,8 @@ function App() {
             <Route exact path='/event' element={<Event showProfile={showProfile} showAddMenu={showAddMenu} />} />
             <Route exact path='/job' element={<Job showProfile={showProfile} showAddMenu={showAddMenu} />} />
             <Route exact path='/magazine' element={<Magazine showProfile={showProfile} showAddMenu={showAddMenu} showAlert={showAlert} />} />
-            <Route exact path='/snews/:tag/:id' element={<SpecificNews showProfile={showProfile} showAddMenu={showAddMenu} showAlert={showAlert} />} />
+            <Route exact path='/:tag/:id' element={<SpecificNews showProfile={showProfile} showAddMenu={showAddMenu} showAlert={showAlert} />} />
+            {/* <Route exact path='/snews/:tag/:id' element={<SpecificNews showProfile={showProfile} showAddMenu={showAddMenu} showAlert={showAlert} />} /> */}
             <Route exact path='/addnews' element={<AddNews showProfile={showProfile} showAddMenu={showAddMenu} showAlert={showAlert} />} />
             <Route exact path='/addmagazine' element={<AddMagazine showProfile={showProfile} showAddMenu={showAddMenu} showAlert={showAlert} />} />
             <Route exact path='/login' element={<Login showAlert={showAlert} />} />

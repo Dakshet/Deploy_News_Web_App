@@ -327,6 +327,7 @@
     transition: all 0.5s;
     cursor: pointer;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.09);
+    overflow: hidden;
 }
 
 .eventInnerBox:hover {

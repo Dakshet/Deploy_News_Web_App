@@ -98,9 +98,9 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 0px 0px 40px;
+    padding: 0px 0px 0px;
     width: 21vw;
-    height: 330px;
+    height: 300px;
     border-bottom: 2px dotted #ccc;
     transition: all 0.5s;
     position: relative;

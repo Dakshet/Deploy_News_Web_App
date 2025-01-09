@@ -60,4 +60,55 @@ a {
 }
 
 
+
+
+
+/* .pagination {
+  background-color: red;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+
+.paginationInnerBtns {
+  height: 50px;
+  width: 80px;
+  background-color: #011E29;
+  color: white;
+  border-radius: 10px;
+  margin: 10px 20px;
+  border: none;
+  outline: none;
+} */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination button.active {
+  background-color: #011E29;
+  color: white;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+
+
+
 /* ----------------------------------------- User menu */

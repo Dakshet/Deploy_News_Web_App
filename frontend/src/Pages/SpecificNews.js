@@ -21,7 +21,7 @@ const SpecificNews = ({ showAddMenu, showAlert, showProfile }) => {
 
     //Method call when we go to the new route
     useEffect(() => {
-        getNewsUsingId(location.pathname.split("/")[3]);
+        getNewsUsingId(location.pathname.split("/")[2]);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

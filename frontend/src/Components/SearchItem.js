@@ -7,7 +7,7 @@ const SearchItem = ({ sNews }) => {
     const navigate = useNavigate();
 
     const handleClick = (id, tag) => {
-        navigate(`/snews/${(tag).toLowerCase()}/${id}`);
+        navigate(`/${(tag).toLowerCase()}/${id}`);
     }
 
 

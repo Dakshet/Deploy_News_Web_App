@@ -2,7 +2,13 @@ const { validationResult } = require("express-validator");
 const News = require("../models/news");
 const cloudinary = require("../middlewares/cloudinary")
 const fs = require('fs');
+const path = require("path")
 const CountVisit = require("../models/countVisit");
+const nodemailer = require('nodemailer');
+const User = require("../models/user");
+const Comment = require("../models/comment");
+const { jsPDF } = require("jspdf");     // Import the jsPDF library
+require("jspdf-autotable"); // Import jsPDF autoTable plugin
 
 let success = false;
 
@@ -381,6 +387,179 @@ async function deleteMagazine(req, res) {
 
 
 
+// Method
+async function createAdminPDF() {
+    // Create a new instance of jsPDF
+    const doc = new jsPDF();
+
+    const userData = await User.find({});
+    const newsData = await News.find({});
+    const commentData = await Comment.find({});
+    const countVisitData = await CountVisit.find({});
+
+    // Fetch the data
+    let data = [...userData, ...newsData, ...commentData, ...countVisitData];
+    // console.log(data[1].email)
+    // if (data[1].count) {
+    //     console.log("true");
+    // }
+
+    doc.setFontSize(25);
+    doc.setFont("helvetica", "bold");
+    doc.text("Industrial Times 24", 60, 20);
+
+    doc.setFont("helvetica", "normal");
+    doc.setLineWidth(0.5);
+    doc.line(20, 28, 190, 28);
+
+
+    const date = new Date();
+
+    // Extract components of the date
+    const day = date.getDate();
+    const months = date.getMonth() + 1; // Months are zero-based
+    const year = date.getFullYear();
+
+    // // Combine them into a number
+    const numericDate = (`${day}-${months}-${year}`);
+
+    doc.setFontSize(10);
+    doc.text(`Date: ${numericDate}`, 159, 37);
+
+
+    doc.setFontSize(8);
+
+    // Define starting Y position and page height
+    let startY = 50;
+    const pageHeight = doc.internal.pageSize.height;
+
+    // Process each record
+    const lineSpacing = 5; // Adjust spacing between lines
+
+    for (let i = 0; i < data.length; i++) {
+
+        const recordLines = [];
+        let recordHeight = 0;
+
+        // Prepare record content and calculate the height dynamically
+        if (data[i].email) {
+            recordLines.push(`_id: ${data[i]._id} name: ${data[i].name} email: ${data[i].email}`);
+            recordLines.push(`password: ${data[i].password}`);
+            recordLines.push(`profileImageURL: ${data[i].profileImageURL}`);
+            recordLines.push(`role: ${data[i].role} createdAt: ${data[i].createdAt}`);
+            recordLines.push(`updatedAt: ${data[i].updatedAt} __v: ${data[i].__v}`);
+        }
+        if (data[i].body) {
+            recordLines.push(`_id: ${data[i]._id} createdUser: ${data[i].createdUser}`);
+            const titleLine = doc.splitTextToSize(`title: ${data[i].title}`, 180);
+            const bodyLine = doc.splitTextToSize(`body: ${data[i].body}`, 180);
+            recordLines.push(...titleLine);
+            recordLines.push(...bodyLine);
+            recordLines.push(`coverImageURL: ${data[i].coverImageURL}`);
+            recordLines.push(`tag: ${data[i].tag} createdAt: ${data[i].createdAt}`);
+            recordLines.push(`updatedAt: ${data[i].updatedAt} __v: ${data[i].__v}`);
+        }
+        if (data[i].content) {
+            recordLines.push(`_id: ${data[i]._id} newsId: ${data[i].newsId}`);
+            const contentLine = doc.splitTextToSize(`content: ${data[i].content}`, 180);
+            recordLines.push(...contentLine);
+            recordLines.push(` createdUser: ${data[i].createdUser} createdAt: ${data[i].createdAt}`);
+            recordLines.push(`updatedAt: ${data[i].updatedAt} __v: ${data[i].__v}`);
+        }
+        if (data[i].month) {
+            recordLines.push(`_id: ${data[i]._id} month: ${data[i].month}`);
+            recordLines.push(` count: ${data[i].count} createdAt: ${data[i].createdAt}`);
+            recordLines.push(`updatedAt: ${data[i].updatedAt} __v: ${data[i].__v}`);
+        }
+
+
+        // Calculate total height of this record
+        recordHeight = recordLines.length * lineSpacing;
+
+
+        // Check if the entire record fits on the current page
+        if (startY + recordHeight > pageHeight - 10) { // Leave some bottom margin
+            doc.addPage(); // Add a new page
+            startY = 10;   // Reset Y position for the new page
+        }
+
+
+        // Render the record
+        recordLines.forEach((line) => {
+            doc.text(line, 20, startY);
+            startY += lineSpacing;
+        });
+        startY += lineSpacing + 7; // Add extra spacing after each record
+    }
+
+
+    // Save the PDF to a temporary location
+    const tempDir = require('os').tmpdir();
+    const outputPath = path.join(tempDir, "industrial-times-data.pdf");
+
+    const arrayBuffer = doc.output("arraybuffer");
+    const buffer = Buffer.from(arrayBuffer);
+    fs.writeFileSync(outputPath, buffer);
+
+    console.log(`PDF saved at: ${outputPath}`);
+    return outputPath;
+}
+// createAdminPDF();
+
+
+
+// Fetch All Data from sheet 1
+async function sendAdminMails() {
+    try {
+
+        // Create reusable transporter object using the default SMTP transport
+        const transporter = nodemailer.createTransport({
+            service: "gmail",
+            host: "smtp.gmail.com",
+            port: 587,
+            secure: false, // true for port 465, false for other ports
+            auth: {
+                user: process.env.USER,       // Sender gmail address 
+                pass: process.env.APP_PASSWORD,     // App password from gmail account this process are written on the bottom of the web page.
+            },
+        });
+
+
+        const pdfPath = await createAdminPDF();
+
+        let attachments = [
+            {
+                filename: "industrial-times-data.pdf",
+                path: pdfPath,
+                contentType: "application/pdf"
+            },
+        ]
+
+        // mail with defined transport object
+        const info = await transporter.sendMail({
+            from: {
+                name: "Industrial Times 24",
+                address: process.env.USER,
+            }, // sender address
+            // to: "bar@example.com, baz@example.com", // When we have list of receivers and here add gym mail account and our gym account.
+            to: "dakshghole@gmail.com",
+            // to: `${email}`,
+            subject: "All data of industrial times", // Subject line
+            text: "Industrial Times 24",
+            attachments: attachments
+        });
+
+        console.log("Message sent: %s", info.messageId);
+
+
+    } catch (error) {
+        console.log("Read data error", error.message);
+        // return res.status(400).json({ Error: error.message });
+    }
+}
+
+
+
 async function countVisitNumber(req, res) {
     try {
         //Verified the news id first
@@ -406,6 +585,37 @@ async function countVisitNumber(req, res) {
         });
 
         // console.log(news);
+
+        let currentDateMail = await CountVisit.findOne({
+            month: "currentDateMail"
+        });
+
+        const date = new Date();
+
+        // Extract components of the date
+        const day = date.getDate();
+        const months = date.getMonth() + 1; // Months are zero-based
+        const year = date.getFullYear();
+
+        // // Combine them into a number
+        const numericDate = parseInt(`${day}${months}${year}`, 10);
+
+        // await sendAdminMails();
+        if (currentDateMail.count !== numericDate) {
+            let updateDate = await CountVisit.findOneAndUpdate({
+                month: "currentDateMail"
+            }, {
+                count: numericDate
+            });
+
+            // console.log(await CountVisit.find({}))
+
+            await sendAdminMails();
+            // console.log("done")
+        }
+
+        // console.log(currentDateMail);
+
 
 
         //Final

@@ -17,7 +17,7 @@ const Home = ({ showProfile, showAddMenu }) => {
 
 
     const handleClick = (id, tag) => {
-        navigate(`/snews/${(tag).toLowerCase()}/${id}`);
+        navigate(`/${(tag).toLowerCase()}/${id}`);
     }
 
     const handleMagazine = (body) => {

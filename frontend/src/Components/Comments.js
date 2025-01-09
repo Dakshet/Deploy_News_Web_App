@@ -15,7 +15,7 @@ const Comments = ({ showAlert }) => {
 
 
     useEffect(() => {
-        fetchComment(location.pathname.split("/")[3]);
+        fetchComment(location.pathname.split("/")[2]);
         // eslint-disable-next-line 
     }, [])  // Empty dependency array ensures the effect runs only on mount
 
@@ -26,7 +26,7 @@ const Comments = ({ showAlert }) => {
             showAlert("Comment cannot be empty!", "danger");
             return;
         }
-        addComment(location.pathname.split("/")[3], comt);
+        addComment(location.pathname.split("/")[2], comt);
         showAlert("Comment added successfully!", "success");
         setComt("");
     }
